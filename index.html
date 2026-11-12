@@ -1,63 +1,63 @@
 ﻿<!DOCTYPE html>
-<html lang="es" data-theme="dark">
+<html lang="es" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio · Jorge Pérez Alta Joyería</title>
+    <title>Atelier · Jorge Pérez Alta Joyería</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body data-page="home">
-    <canvas id="webgl-bg"></canvas>
+    <!-- Lienzo con las joyas reales de la colección flotando suavemente en perspectiva -->
+    <div id="floating-jewels-bg" class="Floating-jewels-stage"></div>
+
     <header class="navbar" id="shared-navbar"></header>
     <aside class="cart-drawer" id="shared-cart-drawer"></aside>
 
     <div class="page-shell">
         <main>
-    <section class="hero-portal">
+    <section class="hero-editorial">
         <div>
             <span class="eyebrow">COLECCIÓN DE ALTA JOYERÍA · PIEZAS ÚNICAS</span>
-            <h1 class="page-title" style="font-size:clamp(3rem,5.5vw,4.8rem)">Hecha de Tiempo</h1>
-            <p class="page-lead" style="margin-bottom:2rem">
-                Nueve obras irrepetibles esculpidas a mano en plata ley 950 y rodocrosita austral por el maestro orfebre chileno <strong>Jorge Pérez</strong>. Cada pieza posee su propia arquitectura, su relato de origen y su certificado individual.
+            <h1 class="page-title" style="font-size:clamp(2.8rem,5vw,4.4rem)">Hecha de Tiempo</h1>
+            <p class="page-lead" style="margin-bottom:2.4rem">
+                La elegancia verdadera habita en la calma de los materiales nobles. Nueve esculturas íntimas en plata ley 950 y rodocrosita austral, forjadas a mano por el maestro orfebre chileno <strong>Jorge Pérez</strong>.
             </p>
             <div style="display:flex;gap:1rem;flex-wrap:wrap">
-                <a href="coleccion.html" class="btn-luxury">Entrar al Catálogo (9 Piezas)</a>
-                <a href="probador.html" class="btn-luxury btn-rose">Sala de Probador con Cámara</a>
-            </div>
-
-            <div class="portal-cards">
-                <a href="coleccion.html" class="portal-card">
-                    <span class="eyebrow">SALA I</span>
-                    <h3>Las 9 Joyas y sus Historias</h3>
-                    <p>Explora el catálogo completo con precios en CLP, USD y EUR, relieve 3D y acceso a la página biográfica de cada colgante.</p>
-                </a>
-                <a href="probador.html" class="portal-card">
-                    <span class="eyebrow">SALA II</span>
-                    <h3>Espejo Virtual en Vivo</h3>
-                    <p>Proyecta cualquiera de las nueve piezas sobre tu cuello mediante tu cámara web o celular con ajuste de escala real.</p>
-                </a>
-                <a href="coleccionistas.html" class="portal-card">
-                    <span class="eyebrow">SALA III</span>
-                    <h3>Adquisición y Promociones</h3>
-                    <p>Configura conjuntos de 2 o más obras con bonificaciones del 10% y 18% para coleccionistas y reserva directa.</p>
-                </a>
-                <a href="orfebre.html" class="portal-card">
-                    <span class="eyebrow">SALA IV</span>
-                    <h3>El Maestro Jorge Pérez</h3>
-                    <p>Conoce la historia del orfebre nacido en Valparaíso, su taller de fuego y buril, y el proceso detrás de cada gema.</p>
-                </a>
+                <a href="coleccion.html" class="btn-luxury btn-soft">Ver la Colección Completa</a>
+                <a href="probador.html" class="btn-luxury">Espejo Virtual en Vivo</a>
             </div>
         </div>
+        <div class="hero-pedestal" id="hero-featured-jewel"></div>
+    </section>
 
-        <div class="hero-Showcase-card" id="hero-featured-jewel"></div>
+    <section class="rooms-grid">
+        <a href="coleccion.html" class="room-card">
+            <span class="eyebrow">I · CATÁLOGO</span>
+            <h3>Las Nueve Obras</h3>
+            <p>Recorre cada colgante con sus valores en CLP, USD y EUR y accede a su historia individual.</p>
+        </a>
+        <a href="probador.html" class="room-card">
+            <span class="eyebrow">II · EXPERIENCIA</span>
+            <h3>Mídete las Joyas</h3>
+            <p>Un espejo sutil y privado para visualizar cada pieza sobre tu cuello mediante tu cámara.</p>
+        </a>
+        <a href="coleccionistas.html" class="room-card">
+            <span class="eyebrow">III · PRIVILEGIOS</span>
+            <h3>Adquisición y Conjuntos</h3>
+            <p>Condiciones especiales del 10% y 18% al reunir dos o más piezas únicas de la colección.</p>
+        </a>
+        <a href="orfebre.html" class="room-card">
+            <span class="eyebrow">IV · AUTOR</span>
+            <h3>El Maestro Orfebre</h3>
+            <p>La trayectoria de Jorge Pérez en Valparaíso y el noble oficio manual detrás de cada engaste.</p>
+        </a>
     </section>
 </main>
         <footer class="footer">
-            JORGE PÉREZ · ALTA JOYERÍA DE AUTOR · VALPARAÍSO, CHILE · CONTACTO DIRECTO: +56 9 5625 8569
+            JORGE PÉREZ · ALTA JOYERÍA DE AUTOR · VALPARAÍSO, CHILE · ATENCIÓN PRIVADA: +56 9 5625 8569
         </footer>
     </div>
 

@@ -1,12 +1,72 @@
-﻿let currentLang = localStorage.getItem('jp_lang') || 'es';
+﻿const UI_TEXT = {
+    es: {
+        brandSub: "ALTA JOYERÍA · VALPARAÍSO, CHILE",
+        navHome: "Atelier", navCat: "Colección", navTry: "Probador Virtual", navPromo: "Adquisición", navArtist: "El Orfebre",
+        themeLight: "☀ Luz de Día", themeDark: "☾ Terciopelo Nocturno",
+        cartBtn: "Seleccionadas",
+        cartTitle: "Cofre de Selección",
+        cartEmpty: "Tu cofre está vacío. Explora la colección para seleccionar tus piezas favoritas.",
+        cartBonusActive: "BONIFICACIÓN DE COLECCIONISTA APLICADA",
+        cartBonusHint: "Privilegio: 10% al elegir 2 piezas · 18% en 3 o más piezas",
+        cartCheckout: "Coordinar Adquisición por WhatsApp",
+        featuredTag: "PIEZA EMBLEMÁTICA DE LA COLECCIÓN",
+        readStory: "Descubrir su Historia",
+        addToCart: "Añadir al Cofre",
+        addedToCart: "✓ En tu Cofre",
+        backCat: "← Volver a la Colección",
+        reliefHint: "Mueve suavemente el cursor sobre la joya para apreciar su volumen y engaste",
+        tryBtn: "Probar en el Espejo Virtual",
+        waDirect: "Atención Personalizada en WhatsApp"
+    },
+    fr: {
+        brandSub: "HAUTE JOAILLERIE · VALPARAÍSO, CHILI",
+        navHome: "Atelier", navCat: "Collection", navTry: "Essayage Virtuel", navPromo: "Acquisition", navArtist: "L'Orfèvre",
+        themeLight: "☀ Lumière du Jour", themeDark: "☾ Velours Nocturne",
+        cartBtn: "Sélection",
+        cartTitle: "Écrin de Sélection",
+        cartEmpty: "Votre écrin est vide. Parcourez la collection pour choisir vos pièces.",
+        cartBonusActive: "PRIVILÈGE COLLECTIONNEUR APPLIQUÉ",
+        cartBonusHint: "Privilège: 10% pour 2 pièces · 18% dès 3 pièces",
+        cartCheckout: "Finaliser l'Acquisition sur WhatsApp",
+        featuredTag: "PIÈCE EMBLÉMATIQUE DE LA COLLECTION",
+        readStory: "Découvrir son Histoire",
+        addToCart: "Ajouter à l'Écrin",
+        addedToCart: "✓ Dans l'Écrin",
+        backCat: "← Retour à la Collection",
+        reliefHint: "Survolez délicatement le bijou pour apprécier son volume",
+        tryBtn: "Essayer dans le Miroir Virtuel",
+        waDirect: "Service Privé sur WhatsApp"
+    },
+    en: {
+        brandSub: "HIGH JEWELRY · VALPARAÍSO, CHILE",
+        navHome: "Atelier", navCat: "Collection", navTry: "Virtual Try On", navPromo: "Acquisition", navArtist: "The Goldsmith",
+        themeLight: "☀ Daylight Gallery", themeDark: "☾ Night Velvet",
+        cartBtn: "Selection",
+        cartTitle: "Collector Selection",
+        cartEmpty: "Your selection box is empty. Explore the collection to choose your pieces.",
+        cartBonusActive: "COLLECTOR PRIVILEGE APPLIED",
+        cartBonusHint: "Privilege: 10% on 2 pieces · 18% on 3 or more pieces",
+        cartCheckout: "Arrange Acquisition via WhatsApp",
+        featuredTag: "SIGNATURE PIECE OF THE COLLECTION",
+        readStory: "Discover the Story",
+        addToCart: "Add to Selection",
+        addedToCart: "✓ In Selection",
+        backCat: "← Back to Collection",
+        reliefHint: "Gently move your cursor over the jewel to appreciate its relief",
+        tryBtn: "Try On in Virtual Mirror",
+        waDirect: "Private Concierge on WhatsApp"
+    }
+};
+
+let currentLang = localStorage.getItem('jp_lang') || 'es';
 let currentCurrency = localStorage.getItem('jp_currency') || 'CLP';
-let currentTheme = localStorage.getItem('jp_theme') || 'dark';
+// Luminoso ("light") por defecto para transmitir calma, limpieza y elegancia
+let currentTheme = localStorage.getItem('jp_theme') || 'light';
 let cart = JSON.parse(localStorage.getItem('jp_cart') || '[]');
 
 document.addEventListener('DOMContentLoaded', () => {
     applyTheme(currentTheme);
     renderSharedHeaderAndCart();
-    updateStaticTranslations();
 
     const page = document.body.getAttribute('data-page');
     if (page === 'home') initHomePage();
@@ -34,13 +94,13 @@ function applyTheme(theme) {
     currentTheme = theme;
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('jp_theme', theme);
+    const t = UI_TEXT[currentLang];
     const btn = document.getElementById('theme-toggle-btn');
-    if (btn) btn.textContent = theme === 'dark' ? '☀ Modo Claro' : '☾ Modo Oscuro';
-    if (window.update3DTheme) window.update3DTheme(theme);
+    if (btn) btn.textContent = theme === 'light' ? t.themeDark : t.themeLight;
 }
 
 function toggleTheme() {
-    applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+    applyTheme(currentTheme === 'light' ? 'dark' : 'light');
 }
 
 function setCurrency(curr) {
@@ -57,19 +117,20 @@ function setLanguage(lang) {
 
 function renderSharedHeaderAndCart() {
     const page = document.body.getAttribute('data-page');
+    const t = UI_TEXT[currentLang];
     const header = document.getElementById('shared-navbar');
     if (header) {
         header.innerHTML = `
             <a href="index.html" class="brand">
                 <span class="brand-name">JORGE PÉREZ</span>
-                <span class="brand-sub">ALTA JOYERÍA · VALPARAÍSO, CHILE</span>
+                <span class="brand-sub">${t.brandSub}</span>
             </a>
             <nav class="nav-links">
-                <a href="index.html" class="${page==='home'?'active':''}">Portada</a>
-                <a href="coleccion.html" class="${page==='catalog'||page==='single'?'active':''}">Catálogo (9 Piezas)</a>
-                <a href="probador.html" class="${page==='tryon'?'active':''}">Mídete las Joyas</a>
-                <a href="coleccionistas.html" class="${page==='promos'?'active':''}">Compra y Promociones</a>
-                <a href="orfebre.html" class="${page==='artist'?'active':''}">El Orfebre</a>
+                <a href="index.html" class="${page==='home'?'active':''}">${t.navHome}</a>
+                <a href="coleccion.html" class="${page==='catalog'||page==='single'?'active':''}">${t.navCat}</a>
+                <a href="probador.html" class="${page==='tryon'?'active':''}">${t.navTry}</a>
+                <a href="coleccionistas.html" class="${page==='promos'?'active':''}">${t.navPromo}</a>
+                <a href="orfebre.html" class="${page==='artist'?'active':''}">${t.navArtist}</a>
             </nav>
             <div class="controls">
                 <div class="lang-switch">
@@ -77,26 +138,22 @@ function renderSharedHeaderAndCart() {
                     <button onclick="setLanguage('fr')" class="${currentLang==='fr'?'active':''}">FR</button>·
                     <button onclick="setLanguage('en')" class="${currentLang==='en'?'active':''}">EN</button>
                 </div>
-                <select class="control-pill" onchange="setCurrency(this.value)" aria-label="Divisa">
-                    <option value="CLP" ${currentCurrency==='CLP'?'selected':''}>CLP $</option>
-                    <option value="USD" ${currentCurrency==='USD'?'selected':''}>USD $</option>
-                    <option value="EUR" ${currentCurrency==='EUR'?'selected':''}>EUR €</option>
+                <select class="control-pill" onchange="setCurrency(this.value)" aria-label="Moneda">
+                    <option value="CLP" ${currentCurrency==='CLP'?'selected':''}>CLP</option>
+                    <option value="USD" ${currentCurrency==='USD'?'selected':''}>USD</option>
+                    <option value="EUR" ${currentCurrency==='EUR'?'selected':''}>EUR</option>
                 </select>
                 <button id="theme-toggle-btn" class="control-pill" onclick="toggleTheme()">
-                    ${currentTheme === 'dark' ? '☀ Modo Claro' : '☾ Modo Oscuro'}
+                    ${currentTheme === 'light' ? t.themeDark : t.themeLight}
                 </button>
-                <button class="control-pill" onclick="toggleAudio()" id="audio-btn">♪ Saxofón</button>
+                <button class="control-pill" onclick="toggleAudio()" id="audio-btn">♪ Sax</button>
                 <button class="control-pill active" onclick="toggleCartDrawer()">
-                    Cofre (<span id="cart-count">${cart.length}</span>)
+                    ${t.cartBtn} (<span id="cart-count">${cart.length}</span>)
                 </button>
             </div>
         `;
     }
-
-    const drawer = document.getElementById('shared-cart-drawer');
-    if (drawer) {
-        updateCartUI();
-    }
+    updateCartUI();
 }
 
 function addToCart(id) {
@@ -119,6 +176,7 @@ function toggleCartDrawer() {
 }
 
 function updateCartUI() {
+    const t = UI_TEXT[currentLang];
     const countEl = document.getElementById('cart-count');
     if (countEl) countEl.textContent = cart.length;
 
@@ -131,68 +189,65 @@ function updateCartUI() {
         const j = JEWELS.find(x => x.id === id);
         if (!j) return '';
         subtotal += j.priceCLP;
-        names.push(`${j.code}: ${j.title[currentLang]}`);
+        names.push(`${j.code} (${j.title[currentLang]})`);
         const p = formatMoney(j.priceCLP);
         return `
             <div class="cart-item">
                 <img src="assets/joyas/${j.file}" onerror="this.src='assets/joyas/${j.fallback}'">
                 <div style="flex:1">
-                    <div style="font-size:0.65rem;color:var(--accent-rose)">${j.code}</div>
-                    <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem">${j.title[currentLang]}</div>
-                    <div style="font-size:0.78rem;color:var(--text-secondary)">${p.primary}</div>
+                    <div style="font-size:0.62rem;color:var(--accent-rose);letter-spacing:0.14em">${j.code}</div>
+                    <div style="font-family:'Cormorant Garamond',serif;font-size:1.25rem">${j.title[currentLang]}</div>
+                    <div style="font-size:0.78rem;color:var(--text-body)">${p.primary}</div>
                 </div>
                 <button class="control-pill" onclick="removeFromCart('${j.id}')">✕</button>
             </div>
         `;
     }).join('');
 
-    let disc = 0;
-    if (cart.length === 2) disc = 0.10;
-    if (cart.length >= 3) disc = 0.18;
-
+    let disc = cart.length === 2 ? 0.10 : (cart.length >= 3 ? 0.18 : 0);
     const finalCLP = Math.round(subtotal * (1 - disc));
     const totals = formatMoney(finalCLP);
-    const waMsg = encodeURIComponent(`Hola, deseo adquirir las siguientes piezas del catálogo de Jorge Pérez: ${names.join(', ')}. Total con bonificación (${Math.round(disc*100)}%): ${totals.clp} (${totals.usd} / ${totals.eur}).`);
+    const waMsg = encodeURIComponent(`Hola, me gustaría adquirir las siguientes obras de la colección de Jorge Pérez: ${names.join(', ')}. Valor total (${Math.round(disc*100)}% bonificación): ${totals.clp} (${totals.usd} / ${totals.eur}).`);
 
     drawer.innerHTML = `
-        <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border-subtle);padding-bottom:1rem">
-            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:400">Cofre de Adquisición</h3>
-            <button class="control-pill" onclick="toggleCartDrawer()">Cerrar ✕</button>
+        <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border-hairline);padding-bottom:1.1rem">
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:400">${t.cartTitle}</h3>
+            <button class="control-pill" onclick="toggleCartDrawer()">✕</button>
         </div>
         <div class="cart-items-list">
-            ${cart.length === 0 ? '<p style="color:var(--text-muted);font-size:0.85rem">Aún no has seleccionado piezas únicas en tu cofre.</p>' : itemsHtml}
+            ${cart.length === 0 ? `<p style="color:var(--text-muted);font-size:0.84rem;line-height:1.7">${t.cartEmpty}</p>` : itemsHtml}
         </div>
         <div class="cart-footer">
-            <div style="font-size:0.7rem;letter-spacing:0.16em;color:var(--accent-rose);margin-bottom:0.4rem">
-                ${disc > 0 ? `BONIFICACIÓN COLECCIONISTA ${Math.round(disc*100)}% APLICADA` : 'SELECCIONA 2 PIEZAS PARA 10% O 3 PARA 18% DE BONIFICACIÓN'}
+            <div style="font-size:0.66rem;letter-spacing:0.15em;color:var(--accent-rose);margin-bottom:0.4rem">
+                ${disc > 0 ? `${t.cartBonusActive} (${Math.round(disc*100)}%)` : t.cartBonusHint}
             </div>
-            <div style="font-size:1.35rem;font-weight:500">${totals.primary}</div>
-            <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:1.2rem">${totals.all}</div>
-            <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${waMsg}" target="_blank" class="btn-luxury full-width">
-                Finalizar Adquisición por WhatsApp
+            <div style="font-family:'Cormorant Garamond',serif;font-size:2rem">${totals.primary}</div>
+            <div style="font-size:0.74rem;color:var(--text-muted);margin-bottom:1.3rem">${totals.all}</div>
+            <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${waMsg}" target="_blank" class="btn-luxury btn-soft full-width">
+                ${t.cartCheckout}
             </a>
         </div>
     `;
 }
 
-// 1. Inicializador Portada (index.html)
 function initHomePage() {
+    const t = UI_TEXT[currentLang];
     const feat = JEWELS[0];
     const p = formatMoney(feat.priceCLP);
     const box = document.getElementById('hero-featured-jewel');
     if (box) {
         box.innerHTML = `
-            <span class="eyebrow">${feat.code} · OBRA DESTACADA</span>
+            <span class="eyebrow">${feat.code} · ${t.featuredTag}</span>
             <img src="assets/joyas/${feat.file}" onerror="this.src='assets/joyas/${feat.fallback}'" alt="${feat.title[currentLang]}">
-            <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:400;margin-top:1rem">${feat.title[currentLang]}</h2>
-            <p style="font-size:0.85rem;color:var(--text-secondary);margin:0.5rem 0 1.2rem">${p.all}</p>
-            <a href="joya.html?id=01" class="btn-luxury">Leer la Historia de esta Pieza</a>
+            <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:400;margin-top:1.2rem">${feat.title[currentLang]}</h2>
+            <p style="font-size:0.82rem;color:var(--text-muted);margin:0.5rem 0 1.5rem">${p.all}</p>
+            <a href="joya.html?id=01" class="btn-luxury">${t.readStory}</a>
         `;
     }
 }
 
-// 2. Inicializador Catálogo (coleccion.html)
 function initCatalogPage(filterCat) {
+    const t = UI_TEXT[currentLang];
     const grid = document.getElementById('catalog-grid');
     if (!grid) return;
     grid.innerHTML = '';
@@ -200,18 +255,9 @@ function initCatalogPage(filterCat) {
     const list = filterCat === 'all' ? JEWELS : JEWELS.filter(j => j.category === filterCat);
     list.forEach(item => {
         const p = formatMoney(item.priceCLP);
+        const inCart = cart.includes(item.id);
         const card = document.createElement('div');
         card.className = 'jewel-card';
-
-        card.addEventListener('mousemove', e => {
-            const r = card.getBoundingClientRect();
-            const ry = (((e.clientX - r.left) / r.width) - 0.5) * 18;
-            const rx = (0.5 - ((e.clientY - r.top) / r.height)) * 18;
-            card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateY(-5px)`;
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'rotateX(0) rotateY(0) translateY(0)';
-        });
 
         card.innerHTML = `
             <div>
@@ -226,8 +272,8 @@ function initCatalogPage(filterCat) {
                 <div class="jewel-price-main">${p.primary}</div>
                 <div class="jewel-price-sub">${p.all}</div>
                 <div class="card-actions">
-                    <a href="joya.html?id=${item.id}" class="btn-luxury">Historia y Ficha</a>
-                    <button class="btn-luxury btn-rose" onclick="addToCart('${item.id}')">+ Añadir al Cofre</button>
+                    <a href="joya.html?id=${item.id}" class="btn-luxury">${t.readStory}</a>
+                    <button class="btn-luxury btn-soft" onclick="addToCart('${item.id}')">${inCart ? t.addedToCart : t.addToCart}</button>
                 </div>
             </div>
         `;
@@ -235,8 +281,8 @@ function initCatalogPage(filterCat) {
     });
 }
 
-// 3. Inicializador Página Individual por Joya (joya.html?id=XX)
 function initSingleJewelPage() {
+    const t = UI_TEXT[currentLang];
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id') || '01';
     const item = JEWELS.find(j => j.id === id) || JEWELS[0];
@@ -248,11 +294,11 @@ function initSingleJewelPage() {
     const container = document.getElementById('single-jewel-container');
     if (!container) return;
 
-    const waDirect = encodeURIComponent(`Hola, estoy en la página individual de la ${item.code} (${item.title[currentLang]}) de Jorge Pérez y deseo coordinar su adquisición (${p.clp} / ${p.usd}).`);
+    const waDirect = encodeURIComponent(`Hola, me interesa adquirir la ${item.code} (${item.title[currentLang]}) del maestro Jorge Pérez (${p.clp} / ${p.usd}).`);
 
     container.innerHTML = `
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;border-bottom:1px solid var(--border-subtle);padding-bottom:1rem">
-            <a href="coleccion.html" class="control-pill">← Volver al Catálogo Completo</a>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2.5rem;border-bottom:1px solid var(--border-hairline);padding-bottom:1rem">
+            <a href="coleccion.html" class="control-pill">${t.backCat}</a>
             <div style="display:flex;gap:0.8rem">
                 <a href="joya.html?id=${prevItem.id}" class="control-pill">← ${prevItem.code}</a>
                 <a href="joya.html?id=${nextItem.id}" class="control-pill">${nextItem.code} →</a>
@@ -261,43 +307,42 @@ function initSingleJewelPage() {
 
         <div class="single-jewel-layout">
             <div class="single-jewel-stage" id="single-3d-stage">
-                <span class="eyebrow">${item.code} · PIEZA ÚNICA NUMERADA</span>
+                <span class="eyebrow">${item.code} · PIEZA ÚNICA (1 DE 1)</span>
                 <img id="single-3d-img" src="assets/joyas/${item.file}" onerror="this.src='assets/joyas/${item.fallback}'" alt="${item.title[currentLang]}">
-                <p style="font-size:0.7rem;letter-spacing:0.2em;color:var(--accent-rose);margin-top:1.5rem">DESLIZA EL CURSOR PARA INSPECCIONAR EL RELIEVE 3D</p>
+                <p style="font-size:0.68rem;letter-spacing:0.14em;color:var(--text-muted);margin-top:1.8rem">${t.reliefHint}</p>
             </div>
 
             <div>
-                <span class="eyebrow">COLECCIÓN HECHA DE TIEMPO · JORGE PÉREZ</span>
+                <span class="eyebrow">JORGE PÉREZ · COLECCIÓN HECHA DE TIEMPO</span>
                 <h1 class="page-title" style="margin-bottom:0.4rem">${item.title[currentLang]}</h1>
-                <p style="color:var(--accent-rose);font-size:0.85rem;letter-spacing:0.1em;margin-bottom:1.5rem">${item.materials[currentLang]}</p>
+                <p style="color:var(--accent-rose);font-size:0.84rem;letter-spacing:0.08em;margin-bottom:1.8rem">${item.materials[currentLang]}</p>
 
-                <div style="padding:1.4rem;background:var(--bg-secondary);border:1px solid var(--border-subtle);margin-bottom:2rem">
-                    <div style="font-size:1.65rem;font-weight:500">${p.primary}</div>
-                    <div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.3rem">Equivalencia internacional: ${p.all}</div>
+                <div style="padding:1.6rem;background:var(--bg-elevated);border:1px solid var(--border-hairline);margin-bottom:2rem;box-shadow:var(--shadow-luxury)">
+                    <div style="font-family:'Cormorant Garamond',serif;font-size:2.2rem">${p.primary}</div>
+                    <div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.3rem">${p.all}</div>
                 </div>
 
                 <div class="story-chapter">
-                    <h3>I. Génesis e Inspiración Escultórica</h3>
+                    <h3>I. Inspiración y Forma</h3>
                     <p>${item.storyPart1[currentLang]}</p>
-                    <h3 style="margin-top:1.2rem">II. Simbolismo Mineral y Porte</h3>
+                    <h3 style="margin-top:1.4rem">II. Carácter Mineral</h3>
                     <p>${item.storyPart2[currentLang]}</p>
                 </div>
 
                 <table class="specs-table">
-                    <tr><td>Autor</td><td>Jorge Pérez (Taller de Valparaíso, Chile)</td></tr>
-                    <tr><td>Aleación Metálica</td><td>Plata Ley 950 fundida y forjada manualmente</td></tr>
-                    <tr><td>Gema Principal</td><td>Rodocrosita natural seleccionada (${item.stoneCut})</td></tr>
+                    <tr><td>Orfebre</td><td>Jorge Pérez (Valparaíso, Chile)</td></tr>
+                    <tr><td>Metal Noble</td><td>Plata Ley 950 forjada a mano</td></tr>
+                    <tr><td>Gema Austral</td><td>Rodocrosita natural (${item.stoneCut})</td></tr>
                     <tr><td>Dimensiones</td><td>${item.dimensions}</td></tr>
-                    <tr><td>Peso Orfebre</td><td>${item.weight}</td></tr>
-                    <tr><td>Edición</td><td>Ejemplar Único (1 de 1) con Certificado Firmado</td></tr>
+                    <tr><td>Peso</td><td>${item.weight}</td></tr>
                 </table>
 
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem">
-                    <button class="btn-luxury btn-rose" onclick="addToCart('${item.id}')">+ Añadir al Cofre de Compra</button>
-                    <a href="probador.html?id=${item.id}" class="btn-luxury">Probar con Cámara en Vivo</a>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2.2rem">
+                    <button class="btn-luxury btn-soft" onclick="addToCart('${item.id}')">${t.addToCart}</button>
+                    <a href="probador.html?id=${item.id}" class="btn-luxury">${t.tryBtn}</a>
                 </div>
-                <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${waDirect}" target="_blank" class="btn-luxury full-width" style="margin-top:1rem">
-                    Adquirir directamente por WhatsApp (+56 9 5625 8569)
+                <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${waDirect}" target="_blank" class="btn-luxury full-width" style="margin-top:0.9rem">
+                    ${t.waDirect} (+56 9 5625 8569)
                 </a>
             </div>
         </div>
@@ -308,15 +353,14 @@ function initSingleJewelPage() {
     if (stage && img) {
         stage.addEventListener('mousemove', e => {
             const r = stage.getBoundingClientRect();
-            const ry = (((e.clientX - r.left) / r.width) - 0.5) * 28;
-            const rx = (0.5 - ((e.clientY - r.top) / r.height)) * 28;
-            img.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) scale(1.06)`;
+            const ry = (((e.clientX - r.left) / r.width) - 0.5) * 18;
+            const rx = (0.5 - ((e.clientY - r.top) / r.height)) * 18;
+            img.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) scale(1.04)`;
         });
         stage.addEventListener('mouseleave', () => { img.style.transform = 'rotateX(0) rotateY(0) scale(1)'; });
     }
 }
 
-// 4. Inicializador Probador Virtual (probador.html)
 function initTryOnPage() {
     const params = new URLSearchParams(window.location.search);
     const startId = params.get('id') || '01';
@@ -362,7 +406,7 @@ async function startCamera() {
         video.srcObject = stream;
         placeholder.style.display = 'none';
     } catch (e) {
-        alert('Autoriza el permiso de cámara en tu navegador para activar el espejo en vivo.');
+        alert('Por favor autoriza la cámara en tu navegador para activar el espejo virtual.');
     }
 }
 
@@ -386,7 +430,6 @@ function setupArDragging() {
     window.addEventListener('touchmove', e => { if (e.touches[0]) move(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true });
 }
 
-// 5. Inicializador Página de Promociones y Conjuntos (coleccionistas.html)
 function initPromosPage() {
     const grid = document.getElementById('promo-selector-grid');
     if (!grid) return;
@@ -397,18 +440,18 @@ function initPromosPage() {
         const isSelected = cart.includes(item.id);
         const card = document.createElement('div');
         card.className = 'pillar-card';
-        card.style.borderColor = isSelected ? 'var(--accent-rose)' : 'var(--border-subtle)';
+        card.style.borderColor = isSelected ? 'var(--accent-rose)' : 'var(--border-hairline)';
         card.innerHTML = `
-            <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem">
-                <img src="assets/joyas/${item.file}" onerror="this.src='assets/joyas/${item.fallback}'" style="width:68px;height:68px;object-fit:contain">
+            <div style="display:flex;align-items:center;gap:1.2rem;margin-bottom:1.2rem">
+                <img src="assets/joyas/${item.file}" onerror="this.src='assets/joyas/${item.fallback}'" style="width:68px;height:68px;object-fit:contain;filter:var(--jewel-drop)">
                 <div>
                     <span class="eyebrow" style="margin:0">${item.code}</span>
-                    <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.35rem">${item.title[currentLang]}</h4>
-                    <span style="font-size:0.8rem;color:var(--text-secondary)">${p.primary}</span>
+                    <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400">${item.title[currentLang]}</h4>
+                    <span style="font-size:0.8rem;color:var(--text-body)">${p.primary}</span>
                 </div>
             </div>
-            <button class="btn-luxury full-width ${isSelected ? 'btn-rose' : ''}" onclick="togglePromoSelection('${item.id}')">
-                ${isSelected ? '✓ Seleccionada en tu Conjunto' : '+ Incluir en mi Conjunto'}
+            <button class="btn-luxury full-width ${isSelected ? 'btn-soft' : ''}" onclick="togglePromoSelection('${item.id}')">
+                ${isSelected ? '✓ Incluida en tu Conjunto' : '+ Seleccionar para mi Conjunto'}
             </button>
         `;
         grid.appendChild(card);
@@ -437,35 +480,28 @@ function renderPromoSummaryBox() {
     const finalCLP = Math.round(sub * (1 - disc));
     const before = formatMoney(sub);
     const after = formatMoney(finalCLP);
-    const msg = encodeURIComponent(`Hola, he configurado en la página de Coleccionistas el siguiente conjunto de Jorge Pérez (${cart.length} piezas): ${names.join(', ')}. Total con ${Math.round(disc*100)}% de bonificación: ${after.clp} (${after.usd} / ${after.eur}).`);
+    const msg = encodeURIComponent(`Hola, deseo reservar el siguiente conjunto de la colección de Jorge Pérez (${cart.length} piezas): ${names.join(', ')}. Total con ${Math.round(disc*100)}% de bonificación: ${after.clp} (${after.usd} / ${after.eur}).`);
 
     box.innerHTML = `
-        <span class="eyebrow">${cart.length} PIEZAS SELECCIONADAS · ${disc > 0 ? `BONIFICACIÓN DEL ${Math.round(disc*100)}% ACTIVA` : 'AÑADE 2 O MÁS PIEZAS PARA ACTIVAR BONIFICACIÓN'}</span>
-        <div style="font-size:0.9rem;color:var(--text-muted);text-decoration:${disc>0?'line-through':'none'}">Valor individual acumulado: ${before.all}</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:2.6rem;margin:0.4rem 0">${after.primary}</div>
-        <div style="font-size:0.88rem;color:var(--accent-rose);margin-bottom:1.5rem">Equivalencia final: ${after.all}</div>
-        <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${msg}" target="_blank" class="btn-luxury btn-rose">
-            Solicitar Reserva Oficial de este Conjunto (+56 9 5625 8569)
+        <span class="eyebrow">${cart.length} PIEZAS SELECCIONADAS · ${disc > 0 ? `BONIFICACIÓN DEL ${Math.round(disc*100)}% APLICADA` : 'ELIGE 2 O MÁS PIEZAS PARA ACTIVAR BONIFICACIÓN'}</span>
+        <div style="font-size:0.85rem;color:var(--text-muted);text-decoration:${disc>0?'line-through':'none'}">Suma individual: ${before.all}</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:2.8rem;margin:0.4rem 0">${after.primary}</div>
+        <div style="font-size:0.84rem;color:var(--accent-rose);margin-bottom:1.6rem">${after.all}</div>
+        <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${msg}" target="_blank" class="btn-luxury btn-soft">
+            Reservar este Conjunto por WhatsApp (+56 9 5625 8569)
         </a>
     `;
 }
 
-// Reproductor de Saxofón Ambiental (WebAudio Jazz + MP3 si existe)
-let audioCtx = null, isPlayingAudio = false;
 function toggleAudio() {
     const audioEl = document.getElementById('bg-music');
     const btn = document.getElementById('audio-btn');
-    if (audioEl && audioEl.canPlayType('audio/mpeg')) {
-        if (audioEl.paused) {
-            audioEl.volume = 0.25;
-            audioEl.play().then(() => { btn.classList.add('active'); }).catch(() => {});
-            return;
-        } else {
-            audioEl.pause();
-            btn.classList.remove('active');
-            return;
-        }
+    if (!audioEl) return;
+    if (audioEl.paused) {
+        audioEl.volume = 0.22;
+        audioEl.play().then(() => btn.classList.add('active')).catch(() => {});
+    } else {
+        audioEl.pause();
+        btn.classList.remove('active');
     }
 }
-
-function updateStaticTranslations() {}
