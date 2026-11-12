@@ -23,12 +23,32 @@ const CONFIG = {
     bonificaciones: [ { desde: 3, porcentaje: 0.18 }, { desde: 2, porcentaje: 0.10 } ]
 };
 
+/*  VIDEOS
+    Todos son verticales (9:16). Fuente y recorte:
+      intro          joya.mp4 completo (15 s, con la narración)
+      catalogo       joyas_3.mp4, de 2,6 s a 9,3 s
+      probador       joyas_2.mp4, de 2,0 s a 6,8 s
+      coleccionistas joyas_2.mp4, de 7,0 s a 8,8 s (el juego completo)
+      orfebre        joyas_2.mp4, de 11,0 s a 13,0 s (manos con guantes)
+    Los recortes evitan los tramos donde aparecen joyas que no existen en la colección.
+    introObligatoria: true  la primera visita debe ver la presentación completa;
+                            en visitas posteriores aparece el botón "Saltar".            */
+const VIDEOS = {
+    introObligatoria: true,
+    intro:          { src: "assets/video/intro.mp4",          poster: "assets/video/intro.jpg",          sonido: true },
+    coleccion:      { src: "assets/video/catalogo.mp4",       poster: "assets/video/catalogo.jpg",       sonido: true },
+    probador:       { src: "assets/video/probador.mp4",       poster: "assets/video/probador.jpg",       sonido: true },
+    coleccionistas: { src: "assets/video/coleccionistas.mp4", poster: "assets/video/coleccionistas.jpg", sonido: false },
+    orfebre:        { src: "assets/video/orfebre.mp4",        poster: "assets/video/orfebre.jpg",        sonido: false }
+};
+
 /*  CAMPOS POR PIEZA
     ambiente : imagen de campaña (generada a partir de la foto real). null si aún no existe.
     real     : fotografía real de la pieza, con el tono plata corregido. Siempre presente.
     probador : recorte con fondo transparente para el probador virtual.
     medidas / peso : vacíos hasta que se confirmen midiendo la pieza. Si están vacíos,
-                     la fila no se muestra.                                          */
+                     la fila no se muestra.
+    portada        : false para que la pieza no aparezca en el friso de la portada.   */
 
 const JEWELS = [
     {
@@ -189,6 +209,7 @@ const JEWELS = [
     {
         id: "08", code: "VIII", categoria: "orbital", precioCLP: 530000,
         medidas: "", peso: "",
+        portada: false,   // no aparece en el friso de la portada (su foto no comparte el fondo azul de las demás)
         // Sin imagen de campaña todavía: se muestra la fotografía real.
         // Cuando exista, ACTUALIZAR.ps1 la copia como assets/piezas/08_ambiente.jpg y basta cambiar null por esa ruta.
         img: { ambiente: null, real: "assets/piezas/08_real.jpg", probador: "assets/piezas/probador/08.png" },

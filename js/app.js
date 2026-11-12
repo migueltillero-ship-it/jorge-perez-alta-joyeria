@@ -50,6 +50,7 @@ const UI = {
         tasasNota: (f) => `Valores en dólares y euros referenciales (${f}). El precio oficial es en pesos chilenos.`,
         pie: "Imágenes de campaña creadas digitalmente a partir de fotografías reales de cada pieza. La fotografía real se muestra en cada ficha.",
         precio: "Valor", obra: "Obra",
+        entrar: "Entrar con sonido", saltar: "Saltar", sonidoOn: "Activar sonido", sonidoOff: "Silenciar", introNota: "Presentación de 15 segundos con narración.",
         msgGeneral: "Hola, vengo de la página de Jorge Pérez y me gustaría recibir información sobre la colección Hecha de Tiempo."
     },
     fr: {
@@ -95,6 +96,7 @@ const UI = {
         tasasNota: (f) => `Montants en dollars et en euros donnés à titre indicatif (${f}). Le prix officiel est en pesos chiliens.`,
         pie: "Images de campagne créées numériquement à partir de photographies réelles de chaque pièce. La photographie réelle figure sur chaque fiche.",
         precio: "Prix", obra: "Œuvre",
+        entrar: "Entrer avec le son", saltar: "Passer", sonidoOn: "Activer le son", sonidoOff: "Couper le son", introNota: "Présentation de 15 secondes, avec narration.",
         msgGeneral: "Bonjour, je viens du site de Jorge Pérez et je souhaiterais recevoir des informations sur la collection Hecha de Tiempo."
     },
     en: {
@@ -140,6 +142,7 @@ const UI = {
         tasasNota: (f) => `Dollar and euro amounts are for reference only (${f}). The official price is in Chilean pesos.`,
         pie: "Campaign images created digitally from real photographs of each piece. The real photograph is shown on every sheet.",
         precio: "Price", obra: "Work",
+        entrar: "Enter with sound", saltar: "Skip", sonidoOn: "Sound on", sonidoOff: "Mute", introNota: "A 15 second presentation with narration.",
         msgGeneral: "Hello, I come from Jorge Pérez's website and would like information about the Hecha de Tiempo collection."
     }
 };
@@ -288,9 +291,107 @@ function bindAdd(root) {
     refreshCartButtons();
 }
 
+/* ------------------------------------------------------------- videos */
+const VID = (typeof VIDEOS !== "undefined") ? VIDEOS : {};
+const reduceMotion = () => window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function film(key, inner, cls) {
+    const v = VID[key];
+    if (!v) return `<header class="page-head">${inner}</header>`;
+    const t = T();
+    return `<header class="film ${cls || ""}">
+        <div class="film-bg" style="background-image:url('${v.poster}')" aria-hidden="true"></div>
+        <div class="film-text">${inner}</div>
+        <div class="film-frame">
+            <video class="film-v" src="${v.src}" poster="${v.poster}" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+            ${v.sonido ? `<button class="film-snd" type="button" aria-pressed="false">${esc(t.sonidoOn)}</button>` : ""}
+        </div>
+    </header>`;
+}
+let filmObs = null;
+function bindFilms() {
+    if (filmObs) { filmObs.disconnect(); filmObs = null; }
+    const vids = [...document.querySelectorAll(".film-v")];
+    const t = T();
+    const blocked = () => document.body.classList.contains("intro-on");
+    vids.forEach(v => {
+        if (reduceMotion()) {
+            v.addEventListener("click", () => v.paused ? v.play().catch(() => {}) : v.pause());
+            v.style.cursor = "pointer";
+        }
+    });
+    if (!reduceMotion() && "IntersectionObserver" in window) {
+        filmObs = new IntersectionObserver(entries => entries.forEach(e => {
+            if (e.isIntersecting && !blocked()) e.target.play().catch(() => {});
+            else e.target.pause();
+        }), { threshold: 0.25 });
+        vids.forEach(v => filmObs.observe(v));
+    } else if (!reduceMotion() && !blocked()) {
+        vids.forEach(v => v.play().catch(() => {}));
+    }
+    document.querySelectorAll(".film-snd").forEach(b => b.addEventListener("click", () => {
+        const v = b.parentElement.querySelector("video");
+        const on = v.muted;
+        document.querySelectorAll(".film-v").forEach(o => { o.muted = true; });
+        document.querySelectorAll(".film-snd").forEach(o => { o.textContent = t.sonidoOn; o.setAttribute("aria-pressed", "false"); });
+        if (on) {
+            v.muted = false; v.currentTime = 0; v.play().catch(() => {});
+            b.textContent = t.sonidoOff; b.setAttribute("aria-pressed", "true");
+        }
+    }));
+}
+
+/* Presentación inicial: joya.mp4 completo, con su narración.
+   Se muestra al entrar por la portada, una vez por sesión. La primera vez debe verse
+   entera (sin "Saltar"); en visitas posteriores aparece el botón. Si el video no carga,
+   la presentación se cierra sola para no bloquear el sitio. */
+function intro() {
+    const v = VID.intro;
+    if (!v || parse().route !== "inicio") return;
+    try { if (sessionStorage.getItem("jp2_intro_ses")) return; } catch (e) { /* sin almacenamiento */ }
+    const t = T();
+    const visto = store.get("jp2_intro_visto", false) || !VID.introObligatoria;
+    const el = $("#intro");
+    el.innerHTML = `
+        <div class="intro-bg" style="background-image:url('${v.poster}')" aria-hidden="true"></div>
+        <div class="intro-stage">
+            <video id="intro-v" src="${v.src}" poster="${v.poster}" playsinline preload="auto"></video>
+            <div class="intro-start" id="intro-start">
+                <span class="eyebrow">${esc(CONFIG.marca)}</span>
+                <h2 class="intro-title">Hecha de Tiempo</h2>
+                <button class="btn btn-solid" id="intro-go" type="button">${esc(t.entrar)}</button>
+                <p class="small">${esc(t.introNota)}</p>
+            </div>
+            <div class="intro-bar" aria-hidden="true"><span id="intro-prog"></span></div>
+        </div>
+        <button class="intro-skip" id="intro-skip" type="button" ${visto ? "" : "hidden"}>${esc(t.saltar)}</button>`;
+    el.hidden = false;
+    document.body.classList.add("intro-on");
+    const vid = $("#intro-v");
+    let done = false, safety = null;
+    const close = () => {
+        if (done) return; done = true; clearTimeout(safety);
+        store.set("jp2_intro_visto", true);
+        try { sessionStorage.setItem("jp2_intro_ses", "1"); } catch (e) { /* sin almacenamiento */ }
+        vid.pause();
+        el.classList.add("out");
+        document.body.classList.remove("intro-on");
+        setTimeout(() => { el.hidden = true; el.innerHTML = ""; el.classList.remove("out"); }, 800);
+        bindFilms();
+    };
+    $("#intro-go").addEventListener("click", () => {
+        vid.muted = false;
+        const go = () => { $("#intro-start").classList.add("gone"); safety = setTimeout(close, ((vid.duration || 15) + 10) * 1000); };
+        vid.play().then(go).catch(() => { vid.muted = true; vid.play().then(go).catch(close); });
+    });
+    vid.addEventListener("ended", close);
+    vid.addEventListener("error", close);
+    vid.addEventListener("timeupdate", () => { if (vid.duration) $("#intro-prog").style.width = (vid.currentTime / vid.duration * 100) + "%"; });
+    $("#intro-skip").addEventListener("click", close);
+}
+
 function viewInicio() {
     const t = T();
-    const panels = JEWELS.map((j, i) => `
+    const panels = JEWELS.filter(j => j.portada !== false).map((j, i) => `
         <a href="#pieza-${j.id}" class="panel ${i === 0 ? "on" : ""} ${j.img.ambiente ? "" : "is-real"}" data-i="${i}">
             <img src="${mainImg(j)}" alt="${esc(L(j.titulo))}" ${i > 2 ? 'loading="lazy"' : ""}>
             <div class="panel-ov">
@@ -300,10 +401,7 @@ function viewInicio() {
             </div></a>`).join("");
     return `
     <section class="hero">
-        <div class="hero-top">
-            <div><span class="eyebrow">${esc(t.heroEyebrow)}</span><h1 class="hero-title">${esc(t.heroTitulo)}</h1></div>
-            <p class="lead">${esc(t.heroLead)}</p>
-        </div>
+        ${film("intro", `<span class="eyebrow">${esc(t.heroEyebrow)}</span><h1 class="hero-title">${esc(t.heroTitulo)}</h1><p class="lead">${esc(t.heroLead)}</p>`, "film-hero")}
         <div class="ribbon" id="ribbon">${panels}</div>
         <div class="hero-actions">
             <a href="#coleccion" class="btn btn-solid">${esc(t.verCatalogo)}</a>
@@ -327,7 +425,7 @@ let filtro = "todas";
 function viewColeccion() {
     const t = T();
     return `<section class="page">
-        <header class="page-head"><h1 class="page-title">${esc(t.catTitulo)}</h1><p class="lead">${esc(t.catLead)}</p></header>
+        ${film("coleccion", `<h1 class="page-title">${esc(t.catTitulo)}</h1><p class="lead">${esc(t.catLead)}</p>`)}
         <div class="filters">${Object.keys(t.filtros).map(k => `<button class="pill ${filtro === k ? "active" : ""}" data-filter="${k}">${esc(t.filtros[k])}</button>`).join("")}</div>
         <div class="grid" id="grid">${JEWELS.filter(j => filtro === "todas" || j.categoria === filtro).map(card).join("")}</div>
         <p class="muted small center">${esc(t.tasasNota(L(CONFIG.tasasFecha)))}</p>
@@ -402,7 +500,7 @@ function stopCamera() { if (stream) { stream.getTracks().forEach(tr => tr.stop()
 function viewProbador(id) {
     const t = T(); const j = byId(id) || JEWELS[0];
     return `<section class="page">
-        <header class="page-head"><h1 class="page-title">${esc(t.tryTitulo)}</h1><p class="lead">${esc(t.tryLead)}</p></header>
+        ${film("probador", `<h1 class="page-title">${esc(t.tryTitulo)}</h1><p class="lead">${esc(t.tryLead)}</p>`)}
         <div class="tryon">
             <div>
                 <div class="cam" id="cam">
@@ -476,7 +574,7 @@ function afterProbador(id) {
 function viewColeccionistas() {
     const t = T();
     return `<section class="page">
-        <header class="page-head"><h1 class="page-title">${esc(t.coleccTitulo)}</h1><p class="lead">${esc(t.coleccLead)}</p></header>
+        ${film("coleccionistas", `<h1 class="page-title">${esc(t.coleccTitulo)}</h1><p class="lead">${esc(t.coleccLead)}</p>`)}
         <div class="sel-grid">${JEWELS.map(j => {
             const on = S.cart.includes(j.id);
             return `<div class="sel-card ${on ? "on" : ""}">
@@ -510,7 +608,7 @@ function afterColeccionistas() {
 function viewOrfebre() {
     const t = T(); const o = ORFEBRE;
     return `<section class="page">
-        <header class="page-head"><span class="eyebrow">${esc(t.orfEyebrow)} · ${esc(L(o.lugar))}</span><h1 class="page-title">${esc(L(o.titulo))}</h1><p class="lead">${esc(L(o.entrada))}</p></header>
+        ${film("orfebre", `<span class="eyebrow">${esc(t.orfEyebrow)} · ${esc(L(o.lugar))}</span><h1 class="page-title">${esc(L(o.titulo))}</h1><p class="lead">${esc(L(o.entrada))}</p>`)}
         <div class="bio">
             <figure class="bio-photo"><img src="${o.foto}" alt="" loading="lazy" onerror="this.closest('figure').remove()"></figure>
             <div><h2 class="h2">${esc(L(o.origenTitulo))}</h2>${o.origen.map(p => `<p class="lead left">${esc(L(p))}</p>`).join("")}
@@ -546,6 +644,7 @@ function render() {
     const [v, a] = views[route];
     $("#main").innerHTML = v(id);
     if (a) a(id);
+    bindFilms();
     $("#footer").innerHTML = `<p>${esc(CONFIG.marca)} · ${esc(T().sub)} · ${esc(CONFIG.whatsappVisible)}</p><p class="small">${esc(T().pie)}</p>`;
     renderCart();
     document.title = `${CONFIG.nombre} · Hecha de Tiempo`;
@@ -558,5 +657,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") { toggleCart(false); $("#zoom").classList.remove("on"); } });
     window.addEventListener("hashchange", () => { render(); window.scrollTo(0, 0); });
     render();
+    intro();
 });
 })();
