@@ -3,26 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Espejo Virtual · Jorge Pérez Alta Joyería</title>
+    <title>Espejo Virtual en Vivo · Jorge Pérez Alta Joyería</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body data-page="tryon">
-    <!-- Lienzo con las joyas reales de la colección flotando suavemente en perspectiva -->
     <div id="floating-jewels-bg" class="Floating-jewels-stage"></div>
-
     <header class="navbar" id="shared-navbar"></header>
     <aside class="cart-drawer" id="shared-cart-drawer"></aside>
 
     <div class="page-shell">
         <main class="page-container">
     <div class="page-header">
-        <span class="eyebrow">EXPERIENCIA INTERACTIVA DE BOUTIQUE</span>
+        <span class="eyebrow">EXPERIENCIA INTERACTIVA CON CÁMARA</span>
         <h1 class="page-title">Mídete las Joyas</h1>
         <p class="page-lead">
-            Enciende tu cámara para proyectar con suavidad cada colgante sobre tu piel. Arrastra la joya con el cursor o con tu dedo y ajusta su proporción.
+            Activa tu cámara para proyectar cada colgante sobre tu cuello en tiempo real. Arrastra la joya y ajusta su proporción.
         </p>
     </div>
 
@@ -30,11 +28,11 @@
         <div class="camera-stage" id="camera-stage">
             <video id="webcam-video" autoplay playsinline muted></video>
             <div class="camera-placeholder" id="camera-placeholder">
-                <span class="eyebrow">PRIVACIDAD ABSOLUTA</span>
+                <span class="eyebrow">ESPEJO PRIVADO DE BOUTIQUE</span>
                 <p style="max-width:400px;line-height:1.8;color:var(--text-body);font-size:0.88rem">
-                    El espejo funciona íntegramente dentro de tu dispositivo sin almacenar imágenes.
+                    Tu imagen se procesa localmente en tu navegador con total privacidad.
                 </p>
-                <button class="btn-luxury btn-soft" onclick="startCamera()">Activar Espejo con Cámara</button>
+                <button class="btn-luxury btn-soft" onclick="startCamera()">Encender Cámara Ahora</button>
             </div>
             <div class="neck-guide"></div>
             <div id="ar-jewel-wrapper" class="ar-jewel-wrapper">
@@ -43,30 +41,30 @@
         </div>
 
         <div>
-            <span class="eyebrow">COLECCIÓN HECHA DE TIEMPO</span>
-            <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400">Selecciona una Pieza</h3>
+            <span class="eyebrow">SELECTOR DE PIEZAS ÚNICAS</span>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400">Elige la Obra a Probar</h3>
             <div id="tryon-thumbs" class="tryon-thumbs"></div>
 
-            <div style="margin:1.6rem 0">
-                <label style="display:block;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.6rem">
-                    Ajustar Escala en el Espejo
+            <div style="margin:1.5rem 0">
+                <label style="display:block;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.5rem">
+                    Ajustar Tamaño en el Espejo
                 </label>
                 <input type="range" min="65" max="230" value="140" style="width:100%;accent-color:var(--accent-rose)" oninput="document.getElementById('ar-jewel-wrapper').style.width=this.value+'px'">
             </div>
 
-            <div class="pillar-card" style="margin-top:1.5rem">
+            <div class="pillar-card" style="margin-top:1.4rem">
                 <h4 id="ar-title" style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400"></h4>
-                <p id="ar-price" style="color:var(--accent-rose);margin:0.4rem 0 1.4rem;font-size:0.82rem"></p>
+                <p id="ar-price" style="color:var(--accent-rose);margin:0.4rem 0 1.3rem;font-size:0.82rem"></p>
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem">
-                    <a id="ar-story-link" href="joya.html?id=01" class="btn-luxury">Ver Ficha</a>
-                    <button id="ar-add-cart" class="btn-luxury btn-soft">Añadir al Cofre</button>
+                    <a id="ar-story-link" href="joya.html?id=01" class="btn-luxury">Ver Ficha y Lupa</a>
+                    <button id="ar-add-cart" class="btn-luxury btn-soft">+ Añadir al Cofre</button>
                 </div>
             </div>
         </div>
     </div>
 </main>
         <footer class="footer">
-            JORGE PÉREZ · ALTA JOYERÍA DE AUTOR · VALPARAÍSO, CHILE · ATENCIÓN PRIVADA: +56 9 5625 8569
+            JORGE PÉREZ · ALTA JOYERÍA DE AUTOR · VALPARAÍSO, CHILE · CONSERJERÍA PRIVADA: +56 9 5625 8569
         </footer>
     </div>
 

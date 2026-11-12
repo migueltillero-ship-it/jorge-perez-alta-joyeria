@@ -7,7 +7,7 @@ const JEWELS = [
         macro: "assets/macro/01_macro.jpg",
         file: "01_rosa_de_los_vientos_clean.png", fallback: "01_rosa_de_los_vientos.jpg",
         priceCLP: 540000, weight: "18.4 g", dimensions: "48 mm × 42 mm", stoneCut: "Cabujón circular de 18 mm",
-        hours: "34 horas de banco", origin: "Veta Andina Meridional (3.200 m s. n. m.)", mohs: "3.8 Mohs · Pulido Vítreo",
+        hours: "34 horas de banco", origin: "Veta Andina Meridional", mohs: "3.8 Mohs · Pulido Vítreo",
         title: { es: "Rosa de los Vientos", fr: "Rose des Vents", en: "Compass Rose" },
         materials: { es: "Plata ley 950 forjada a mano y rodocrosita circular con bandas de calcita blanca", fr: "Argent massif 950 forgé à la main et rhodochrosite circulaire rubanée", en: "Hand forged 950 silver and circular banded rhodochrosite" },
         excerpt: {
@@ -16,12 +16,12 @@ const JEWELS = [
             en: "Four cardinal loops in 950 silver wire guard a circular cabochon of coral and ivory bloom."
         },
         storyPart1: {
-            es: "Nacida frente a las cartas náuticas antiguas del puerto de Valparaíso, esta obra traduce la brújula oceánica en una estructura aérea. Los cuatro pétalos cardinales fueron curvados al calor lento del soplete a partir de un único hilo trefilado de plata ley 950, logrando una tensión simétrica impecable.",
-            fr: "Née devant les anciennes cartes marines du port de Valparaíso, cette œuvre traduit la boussole océanique en une structure aérienne. Les quatre pétales cardinaux ont été courbés lentement à la flamme à partir d'un fil d'argent 950.",
-            en: "Born before vintage nautical charts in the port of Valparaíso, this work translates the oceanic compass into an aerial structure. Its four cardinal petals were slowly flame curved from drawn 950 silver wire."
+            es: "Nacida frente a las cartas náuticas antiguas del puerto de Valparaíso, esta obra traduce la brújula oceánica en una estructura aérea. Los cuatro pétalos cardinales fueron curvados al calor lento del soplete a partir de un único hilo trefilado de plata ley 950.",
+            fr: "Née devant les anciennes cartes marines du port de Valparaíso, cette œuvre traduit la boussole océanique en une structure aérienne.",
+            en: "Born before vintage nautical charts in the port of Valparaíso, this work translates the oceanic compass into an aerial structure."
         },
         storyPart2: {
-            es: "En su centro exacto levita una rodocrosita circular donde las bandas de carbonato de manganeso dibujan olas blancas sobre un fondo rosa profundo. Es un talismán de rumbo y serenidad.",
+            es: "En su centro exacto levita una rodocrosita circular donde las bandas de carbonato de manganeso dibujan olas blancas sobre un fondo rosa profundo. Ninguna veta se repite jamás.",
             fr: "En son centre exact lévite une rhodochrosite circulaire où les bandes minérales dessinent des vagues blanches sur fond rose profond.",
             en: "At its exact center levitates a circular rhodochrosite where mineral bands draw white waves across a deep rose ground."
         }
@@ -41,12 +41,12 @@ const JEWELS = [
         },
         storyPart1: {
             es: "En las altas cumbres andinas, el deshielo pule la roca en silencio durante siglos. Jorge Pérez diseñó una silueta protectora que suspende un cabujón ovalado bajo un anillo interno, coronado por una gota esférica de plata fundida.",
-            fr: "Sur les hauts sommets andins, la fonte des glaces polit la roche en silence durant des siècles. Cette silhouette suspend un cabochon ovale sous un anneau interne.",
-            en: "High in the Andean peaks, snowmelt polishes rock in silence over centuries. This protective silhouette suspends an oval cabochon beneath an inner silver ring."
+            fr: "Sur les hauts sommets andins, la fonte des glaces polit la roche en silence durant des siècles.",
+            en: "High in the Andean peaks, snowmelt polishes rock in silence over centuries, inspiring this suspended cabochon."
         },
         storyPart2: {
             es: "El espacio de aire entre el bisel central y el marco exterior permite que la luz contornee la pieza y se funda con la piel del escote.",
-            fr: "L'espace d'air entre le serti central et le cadre extérieur permet à la lumière de sculpter la pièce sur la peau.",
+            fr: "L'espace d'air entre le serti central et le cadre extérieur permet à la lumière de sculpter la pièce.",
             en: "The open air between the central bezel and outer frame allows light to contour the piece against the skin."
         }
     },
@@ -55,7 +55,7 @@ const JEWELS = [
         macro: "assets/macro/03_macro.jpg",
         file: "03_rombo_clean.png", fallback: "03_rombo.jpg",
         priceCLP: 510000, weight: "16.8 g", dimensions: "50 mm × 38 mm", stoneCut: "Barra rectangular bandeada de 26 mm",
-        hours: "31 horas de banco", origin: "Estrato Capillitas / Cordillera Sur", mohs: "3.9 Mohs · Corte Tabular",
+        hours: "31 horas de banco", origin: "Estrato Cordillera Sur", mohs: "3.9 Mohs · Corte Tabular",
         title: { es: "Rombo Arquitectónico", fr: "Losange Architectural", en: "Architectural Rhombus" },
         materials: { es: "Plata ley 950 laminada en pórtico y barra de rodocrosita bandeada", fr: "Argent 950 laminé en portique et barre de rhodochrosite rubanée", en: "Rolled 950 silver portico and banded rhodochrosite bar" },
         excerpt: {
@@ -65,13 +65,13 @@ const JEWELS = [
         },
         storyPart1: {
             es: "Un diálogo directo con la arquitectura moderna. La gema fue cortada en un bloque rectangular exacto para revelar cinco estratos geológicos paralelos en tonos rosa viejo, coral y crema mineral.",
-            fr: "Un dialogue direct avec l'architecture moderne. La gemme a été taillée en rectangle pur pour révéler cinq strates géologiques parallèles.",
-            en: "A direct dialogue with modern architecture. The gem was cut into an exact rectangle to reveal five parallel geological strata."
+            fr: "Un dialogue direct avec l'architecture moderne où la gemme révèle cinq strates géologiques parallèles.",
+            en: "A direct dialogue with modern architecture where the gem reveals five parallel geological strata."
         },
         storyPart2: {
             es: "El marco de plata ley 950 la sostiene por sus extremos dejando dos triángulos de aire libre, logrando una geometría audaz y atemporal.",
             fr: "Le cadre en argent 950 la soutient par ses extrémités en laissant deux triangles d'air libre.",
-            en: "The 950 silver frame supports its ends while leaving two open triangles of air for timeless geometric poise."
+            en: "The 950 silver frame supports its ends while leaving two open triangles of air."
         }
     },
     {
@@ -85,17 +85,17 @@ const JEWELS = [
         excerpt: {
             es: "Doble geometría donde un rombo hueco superior conduce hacia una gema cuadrada en ángulo con doble bisel.",
             fr: "Double géométrie où un losange ouvert supérieur mène à une gemme carrée à double serti.",
-            en: "Double geometry where an open upper diamond leads to a double-bezel angled cushion gem."
+            en: "Double geometry where an open upper diamond leads to a stepped bezel cushion gem."
         },
         storyPart1: {
             es: "Construida a partir de la intersección de dos rombos: el superior dibuja el vacío mediante una viga de plata cuadrada, mientras el inferior descansa sobre una caja escalonada hecha a mano.",
-            fr: "Construite à partir de l'intersection de deux losanges: le supérieur dessine le vide tandis que l'inférieur abrite la gemme sur un serti étagé.",
-            en: "Built from the intersection of two diamonds: the upper traces open space while the lower cradles the gem in a stepped bezel."
+            fr: "Construite à partir de l'intersection de deux losanges alliant le vide et la pierre.",
+            en: "Built from the intersection of two diamonds balancing open air and mineral presence."
         },
         storyPart2: {
             es: "La piedra exhibe una nebulosa natural de calcita blanca sobre rosa carmesí que recuerda las nubes altas sobre la cordillera.",
             fr: "La pierre expose une nébuleuse naturelle de calcite blanche sur rose carmin.",
-            en: "The stone displays a natural nebula of white calcite over crimson rose reminiscent of high mountain clouds."
+            en: "The stone displays a natural nebula of white calcite over crimson rose."
         }
     },
     {
@@ -113,13 +113,13 @@ const JEWELS = [
         },
         storyPart1: {
             es: "Esta gema extraordinaria conserva el dibujo exacto de las estalactitas minerales con anillos concéntricos y trazos quebrados en tonos rosa cuarzo, marfil y grafito.",
-            fr: "Cette gemme extraordinaire conserve le dessin exact des stalactites minérales aux anneaux concentriques.",
-            en: "This extraordinary gem preserves the exact pattern of mineral stalactites with concentric rings and quartz rose tones."
+            fr: "Cette gemme extraordinaire conserve le dessin exact des stalactites minérales.",
+            en: "This extraordinary gem preserves the exact pattern of mineral stalactites in quartz rose and ivory."
         },
         storyPart2: {
             es: "Para no interrumpir su paisaje interior, Jorge Pérez la abrazó solo por el flanco derecho con una cinta de plata que nace y muere en voluta.",
-            fr: "Pour ne pas interrompre son paysage intérieur, l'orfèvre l'a enlacée uniquement sur le flanc droit d'un ruban en volute.",
-            en: "To preserve its inner landscape, the goldsmith embraced only its right flank with a scrolling silver ribbon."
+            fr: "Pour ne pas interrompre son paysage intérieur, l'orfèvre l'a enlacée uniquement sur le flanc droit.",
+            en: "To preserve its inner landscape, the goldsmith embraced only its right flank with a scrolling ribbon."
         }
     },
     {
@@ -132,18 +132,18 @@ const JEWELS = [
         materials: { es: "Juego de tres obras articuladas en plata ley 950 y rodocrosita veteada", fr: "Parure de trois œuvres articulées en argent 950 et rhodochrosite veinée", en: "Three piece articulated suite in 950 silver and veined rhodochrosite" },
         excerpt: {
             es: "Conjunto monumental de tres piezas articuladas con cabezales cuadrados y cuerpos romboidales de una misma roca.",
-            fr: "Ensemble monumental de trois pièces articulées avec sommets carrés et corps en losange d'une même roche.",
-            en: "Monumental three piece articulated suite with square crowns and diamond bodies cut from a single rock."
+            fr: "Ensemble monumental de trois pièces articulées avec sommets carrés et corps en losange.",
+            en: "Monumental three piece articulated suite with square crowns and diamond bodies from one rock."
         },
         storyPart1: {
-            es: "La joya cumbre para coleccionistas. Seis gemas en total (tres cabezales cuadrados y tres caídas romboidales) fueron rebanadas de la misma sección mineral para mantener la continuidad exacta de sus vetas ocres y rosadas.",
-            fr: "Le chef d'œuvre pour collectionneurs. Six gemmes au total ont été tranchées dans la même section minérale pour maintenir la continuité des veines.",
-            en: "The pinnacle collector suite. Six gems in total were sliced from the very same mineral section to preserve vein continuity."
+            es: "La joya cumbre para coleccionistas. Seis gemas en total fueron rebanadas de la misma sección mineral para mantener la continuidad exacta de sus vetas ocres y rosadas.",
+            fr: "Le chef d'œuvre pour collectionneurs: six gemmes tranchées dans la même section minérale.",
+            en: "The pinnacle collector suite: six gems sliced from the very same mineral section."
         },
         storyPart2: {
             es: "Sus charnelas mecánicas hechas a mano permiten que cada rombo oscile suavemente con el movimiento.",
             fr: "Ses charnières mécaniques façonnées à la main permettent à chaque losange d'osciller doucement.",
-            en: "Its handcrafted mechanical hinges allow each lower diamond to sway gently with movement."
+            en: "Its handcrafted mechanical hinges allow each lower diamond to sway gently."
         }
     },
     {
@@ -161,13 +161,13 @@ const JEWELS = [
         },
         storyPart1: {
             es: "Sobre una sólida plataforma rectangular de bordes redondeados en plata ley 950 descansa una rodocrosita cuyas capas horizontales evocan el oleaje del Pacífico detenido en la piedra.",
-            fr: "Sur une solide plateforme rectangulaire aux bords arrondis repose une rhodochrosite dont les couches évoquent la houle du Pacifique.",
-            en: "Upon a solid rounded rectangular platform of 950 silver rests a rhodochrosite whose horizontal layers evoke Pacific waves frozen in stone."
+            fr: "Sur une solide plateforme rectangulaire repose une rhodochrosite évoquant la houle du Pacifique.",
+            en: "Upon a solid rounded platform rests a rhodochrosite whose horizontal layers evoke Pacific waves."
         },
         storyPart2: {
             es: "En la cima, un arabesco asimétrico forjado a martillo aporta la gracia del barroco hispanoamericano.",
-            fr: "Au sommet, une arabesque asymétrique forgée au marteau apporte la grâce du baroque sud américain.",
-            en: "At the crown, a hammer forged asymmetrical arabesque brings the grace of South American baroque artistry."
+            fr: "Au sommet, une arabesque forgée au marteau apporte la grâce du baroque sud américain.",
+            en: "At the crown, a hammer forged arabesque brings the grace of South American baroque artistry."
         }
     },
     {
@@ -185,13 +185,13 @@ const JEWELS = [
         },
         storyPart1: {
             es: "Obra de ingeniería orfebre donde el cabujón ovalado parece flotar dentro de una elipse mayor gracias a cuatro brazos estructurales soldados con precisión microscópica.",
-            fr: "Œuvre d'ingénierie orfèvre où le cabochon ovale semble flotter dans une ellipse grâce à quatre bras structurels.",
-            en: "A feat of goldsmith engineering where the oval cabochon appears to float within a larger ellipse via four structural arms."
+            fr: "Œuvre d'ingénierie orfèvre où le cabochon ovale semble flotter dans une ellipse.",
+            en: "A feat of goldsmith engineering where the oval cabochon appears to float within a larger ellipse."
         },
         storyPart2: {
             es: "El tono uniforme y profundo de esta gema contrasta con el brillo especular de la estructura de plata.",
             fr: "Le ton profond de cette gemme contraste avec l'éclat miroir de la structure en argent.",
-            en: "The deep, rich tone of this gem contrasts against the mirror luster of its silver architecture."
+            en: "The deep tone of this gem contrasts against the mirror luster of its silver architecture."
         }
     },
     {
@@ -209,13 +209,13 @@ const JEWELS = [
         },
         storyPart1: {
             es: "Cierra la colección Hecha de Tiempo con un diseño cinético: tres rombos biselados en plata ley 950 convergen en una constelación central de argollas móviles hechas una a una.",
-            fr: "Clôt la collection avec un design cinétique: trois losanges sertis d'argent 950 convergent vers une constellation d'anneaux mobiles.",
-            en: "Closes the collection with a kinetic design: three bezel set diamonds converge at a central constellation of mobile rings."
+            fr: "Clôt la collection avec un design cinétique: trois losanges sertis d'argent 950 convergent vers un nœud central.",
+            en: "Closes the collection with a kinetic design: three bezel set diamonds converge at a central ring knot."
         },
         storyPart2: {
             es: "Al caminar, las tres piedras reflejan la luz en ángulos distintos, evocando las estrellas australes sobre el océano.",
-            fr: "En marchant, les trois pierres reflètent la lumière sous différents angles telles des étoiles australes.",
-            en: "As the wearer moves, the three stones catch light at shifting angles like southern stars over the ocean."
+            fr: "En marchant, les trois pierres reflètent la lumière sous différents angles.",
+            en: "As the wearer moves, the three stones catch light at shifting angles."
         }
     }
 ];

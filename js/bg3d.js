@@ -1,52 +1,40 @@
-﻿// Fondo Escultórico en Perspectiva usando las Joyas Reales de la Colección
-(function initJewelPerspectiveBackground() {
+﻿(function initJewelPerspectiveBackground() {
     const stage = document.getElementById('floating-jewels-bg');
     if (!stage || typeof JEWELS === 'undefined') return;
 
-    // Seleccionamos 4 piezas representativas de la colección para flotar en distintas profundidades
     const layers = [
-        { jewel: JEWELS[0], depthClass: 'depth-near', top: '12%', left: '6%', factorX: 28, factorY: 22, rot: -8 },
-        { jewel: JEWELS[8], depthClass: 'depth-mid',  top: '58%', left: '78%', factorX: -20, factorY: 18, rot: 12 },
-        { jewel: JEWELS[4], depthClass: 'depth-far',  top: '16%', left: '74%', factorX: 14, factorY: -14, rot: 6 },
-        { jewel: JEWELS[6], depthClass: 'depth-far',  top: '68%', left: '10%', factorX: -12, factorY: -16, rot: -10 }
+        { jewel: JEWELS[0], top: '12%', left: '5%', size: '340px', fx: 22, fy: 18, rot: -8 },
+        { jewel: JEWELS[8], top: '60%', left: '78%', size: '300px', fx: -18, fy: 15, rot: 12 },
+        { jewel: JEWELS[4], top: '18%', left: '75%', size: '240px', fx: 14, fy: -14, rot: 6 },
+        { jewel: JEWELS[6], top: '68%', left: '8%', size: '250px', fx: -12, fy: -16, rot: -10 }
     ];
 
-    const elements = [];
-
+    const els = [];
     layers.forEach(cfg => {
         const img = document.createElement('img');
-        img.className = `bg-jewel-layer ${cfg.depthClass}`;
+        img.className = 'bg-jewel-layer';
         img.src = `assets/joyas/${cfg.jewel.file}`;
         img.onerror = () => { img.src = `assets/joyas/${cfg.jewel.fallback}`; };
         img.style.top = cfg.top;
         img.style.left = cfg.left;
-        img.style.transform = `translate3d(0px, 0px, 0px) rotate(${cfg.rot}deg)`;
+        img.style.width = cfg.size;
         stage.appendChild(img);
-        elements.push({ el: img, cfg });
+        els.push({ el: img, cfg });
     });
 
-    let targetX = 0, targetY = 0;
-    let currentX = 0, currentY = 0;
-
-    window.addEventListener('mousemove', (e) => {
-        targetX = (e.clientX / window.innerWidth - 0.5) * 2;
-        targetY = (e.clientY / window.innerHeight - 0.5) * 2;
+    let tx = 0, ty = 0, cx = 0, cy = 0;
+    window.addEventListener('mousemove', e => {
+        tx = (e.clientX / window.innerWidth - 0.5) * 2;
+        ty = (e.clientY / window.innerHeight - 0.5) * 2;
     });
 
-    function animatePerspective() {
-        currentX += (targetX - currentX) * 0.04;
-        currentY += (targetY - currentY) * 0.04;
-
-        const scrollOffset = window.scrollY * 0.04;
-
-        elements.forEach(({ el, cfg }) => {
-            const dx = currentX * cfg.factorX;
-            const dy = currentY * cfg.factorY - (scrollOffset * (cfg.factorY / 20));
-            const r = cfg.rot + (currentX * 4);
-            el.style.transform = `translate3d(${dx}px, ${dy}px, 0px) rotate(${r}deg)`;
+    function loop() {
+        cx += (tx - cx) * 0.04;
+        cy += (ty - cy) * 0.04;
+        els.forEach(({ el, cfg }) => {
+            el.style.transform = `translate3d(${cx * cfg.fx}px, ${cy * cfg.fy}px, 0) rotate(${cfg.rot + cx * 3}deg)`;
         });
-
-        requestAnimationFrame(animatePerspective);
+        requestAnimationFrame(loop);
     }
-    animatePerspective();
+    loop();
 })();

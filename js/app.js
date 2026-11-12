@@ -1,90 +1,60 @@
 ﻿const UI_TEXT = {
     es: {
-        conciergeLeft: "ALTA JOYERÍA DE AUTOR · PIEZAS ÚNICAS NUMERADAS (1 DE 1)",
-        conciergeRight: "ENVÍO ASEGURADO NACIONAL E INTERNACIONAL · CONTACTO: +56 9 5625 8569",
-        brandSub: "MAESTRO ORFEBRE · VALPARAÍSO, CHILE",
-        navHome: "Portada y Vitrina", navCat: "Catálogo (9 Obras)", navTry: "Probador con Cámara", navPromo: "Adquisición y Conjuntos", navArtist: "El Maestro Orfebre",
+        conciergeLeft: "LA RODOCROSITA ES TIEMPO HECHO PIEDRA · NINGUNA VETA SE REPITE",
+        conciergeRight: "CADA PIEZA EXISTE UNA SOLA VEZ (1 DE 1) · WHATSAPP: +56 9 5625 8569",
+        brandSub: "ALTA JOYERÍA · VALPARAÍSO, CHILE",
+        navHome: "Portada y Film", navCat: "Catálogo (9 Obras)", navTry: "Probador con Cámara", navPromo: "Coleccionistas", navArtist: "El Orfebre",
         themeLight: "☀ Luz de Galería", themeDark: "☾ Azul Nocturno",
-        cartBtn: "Cofre",
-        cartTitle: "Cofre de Adquisición",
-        cartEmpty: "Tu cofre está vacío. Explora las nueve obras únicas para configurar tu reserva.",
+        cartBtn: "Cofre", cartTitle: "Cofre de Adquisición",
+        cartEmpty: "Tu cofre está vacío. Explora las nueve obras únicas para configurar tu selección.",
         cartBonusActive: "BONIFICACIÓN DE COLECCIONISTA APLICADA",
         cartBonusHint: "Privilegio: 10% al elegir 2 obras · 18% en 3 o más obras",
         cartCheckout: "Confirmar Reserva por WhatsApp",
-        readStory: "Inspeccionar Obra",
-        addToCart: "Añadir al Cofre",
-        addedToCart: "✓ En tu Cofre",
-        backCat: "← Volver al Catálogo Completo",
-        tryBtn: "Probar en Espejo con Cámara",
-        waDirect: "Atención Privada en WhatsApp",
+        readStory: "Inspeccionar Obra", addToCart: "Añadir al Cofre", addedToCart: "✓ En tu Cofre",
+        backCat: "← Volver al Catálogo Completo", tryBtn: "Probar en Cámara", waDirect: "Atención Privada en WhatsApp",
         loupeHint: "PASA EL CURSOR SOBRE LA FOTOGRAFÍA PARA ACTIVAR LA LUPA GEMOLÓGICA 3X",
-        viewMacro: "Vista Macro en Terciopelo",
-        viewClean: "Vista Silueta sobre Blanco",
+        viewMacro: "Vista Macro en Terciopelo", viewClean: "Vista Silueta sobre Luz",
         chainLabel: "SELECCIONA EL LARGO DE CADENA EN PLATA LEY 950 (INCLUIDA):",
-        chain1: "45 cm · Clavícula",
-        chain2: "50 cm · Princesa",
-        chain3: "60 cm · Matinée",
-        certBtn: "Emitir Certificado de Autenticidad (1 de 1)",
-        giftLabel: "Presentación y Nota Caligráfica de Regalo (Sin cargo):",
-        giftPlaceholder: "Escribe aquí tu dedicatoria si deseas que el maestro la incluya en tarjeta lacrada..."
+        chain1: "45 cm · Clavícula", chain2: "50 cm · Princesa", chain3: "60 cm · Matinée",
+        certBtn: "Ver Certificado de Pieza Única (1 de 1)"
     },
     fr: {
-        conciergeLeft: "HAUTE JOAILLERIE D'AUTEUR · PIÈCES UNIQUES NUMÉROTÉES (1 SUR 1)",
-        conciergeRight: "LIVRAISON INTERNATIONALE ASSURÉE · CONCIERGERIE: +56 9 5625 8569",
-        brandSub: "MAÎTRE ORFÈVRE · VALPARAÍSO, CHILI",
-        navHome: "Vitrine Collection", navCat: "Catalogue (9 Œuvres)", navTry: "Essayage Caméra", navPromo: "Acquisition & Coffrets", navArtist: "Le Maître Orfèvre",
+        conciergeLeft: "LA RHODOCHROSITE EST LE TEMPS FAIT PIERRE · AUCUNE VEINE NE SE RÉPÈTE",
+        conciergeRight: "CHAQUE PIÈCE N'EXISTE QU'UNE SEULE FOIS · WHATSAPP: +56 9 5625 8569",
+        brandSub: "HAUTE JOAILLERIE · VALPARAÍSO, CHILI",
+        navHome: "Vitrine & Film", navCat: "Catalogue (9 Œuvres)", navTry: "Essayage Caméra", navPromo: "Collectionneurs", navArtist: "L'Orfèvre",
         themeLight: "☀ Galerie Claire", themeDark: "☾ Bleu Nocturne",
-        cartBtn: "Écrin",
-        cartTitle: "Écrin d'Acquisition",
-        cartEmpty: "Votre écrin est vide. Découvrez les neuf pièces uniques pour composer votre sélection.",
+        cartBtn: "Écrin", cartTitle: "Écrin d'Acquisition",
+        cartEmpty: "Votre écrin est vide. Découvrez les neuf pièces uniques.",
         cartBonusActive: "PRIVILÈGE COLLECTIONNEUR APPLIQUÉ",
         cartBonusHint: "Privilège: 10% pour 2 œuvres · 18% dès 3 œuvres",
         cartCheckout: "Confirmer sur WhatsApp",
-        readStory: "Inspecter l'Œuvre",
-        addToCart: "Ajouter à l'Écrin",
-        addedToCart: "✓ Dans l'Écrin",
-        backCat: "← Retour au Catalogue",
-        tryBtn: "Essayer avec Caméra",
-        waDirect: "Conciergerie Privée WhatsApp",
+        readStory: "Inspecter l'Œuvre", addToCart: "Ajouter à l'Écrin", addedToCart: "✓ Dans l'Écrin",
+        backCat: "← Retour au Catalogue", tryBtn: "Essayer avec Caméra", waDirect: "Conciergerie WhatsApp",
         loupeHint: "SURVOLEZ LA PHOTOGRAPHIE POUR ACTIVER LA LOUPE GEMMOLOGIQUE 3X",
-        viewMacro: "Vue Macro sur Velours",
-        viewClean: "Vue Silhouette Claire",
+        viewMacro: "Vue Macro sur Velours", viewClean: "Vue Silhouette Claire",
         chainLabel: "CHOISISSEZ LA LONGUEUR DE CHAÎNE EN ARGENT 950 (INCLUSE):",
-        chain1: "45 cm · Clavicule",
-        chain2: "50 cm · Princesse",
-        chain3: "60 cm · Matinée",
-        certBtn: "Afficher le Certificat d'Authenticité (1 sur 1)",
-        giftLabel: "Écrin Cadeau et Note Calligraphiée (Offert):",
-        giftPlaceholder: "Inscrivez votre message personnel pour l'inclure dans une enveloppe scellée..."
+        chain1: "45 cm · Clavicule", chain2: "50 cm · Princesse", chain3: "60 cm · Matinée",
+        certBtn: "Voir le Certificat de Pièce Unique (1 sur 1)"
     },
     en: {
-        conciergeLeft: "SIGNATURE HIGH JEWELRY · NUMBERED ONE OF A KIND WORKS (1 OF 1)",
-        conciergeRight: "INSURED WORLDWIDE SHIPPING · PRIVATE CONCIERGE: +56 9 5625 8569",
-        brandSub: "MASTER GOLDSMITH · VALPARAÍSO, CHILE",
-        navHome: "Collection Showcase", navCat: "Catalog (9 Works)", navTry: "Camera Try On", navPromo: "Collector Sets", navArtist: "The Master Goldsmith",
+        conciergeLeft: "RHODOCHROSITE IS TIME MADE STONE · NO VEIN EVER REPEATS",
+        conciergeRight: "EACH PIECE EXISTS ONLY ONCE (1 OF 1) · WHATSAPP: +56 9 5625 8569",
+        brandSub: "HIGH JEWELRY · VALPARAÍSO, CHILE",
+        navHome: "Showcase & Film", navCat: "Catalog (9 Works)", navTry: "Camera Try On", navPromo: "Collectors", navArtist: "The Goldsmith",
         themeLight: "☀ Daylight Gallery", themeDark: "☾ Midnight Velvet",
-        cartBtn: "Selection",
-        cartTitle: "Acquisition Chest",
-        cartEmpty: "Your selection chest is empty. Explore the nine unique works to arrange your acquisition.",
+        cartBtn: "Selection", cartTitle: "Acquisition Chest",
+        cartEmpty: "Your selection chest is empty. Explore the nine unique works.",
         cartBonusActive: "COLLECTOR PRIVILEGE APPLIED",
         cartBonusHint: "Privilege: 10% on 2 works · 18% on 3 or more works",
         cartCheckout: "Confirm via WhatsApp",
-        readStory: "Inspect Work",
-        addToCart: "Add to Selection",
-        addedToCart: "✓ In Selection",
-        backCat: "← Back to Full Catalog",
-        tryBtn: "Try On with Camera",
-        waDirect: "Private Concierge on WhatsApp",
+        readStory: "Inspect Work", addToCart: "Add to Selection", addedToCart: "✓ In Selection",
+        backCat: "← Back to Full Catalog", tryBtn: "Camera Try On", waDirect: "Private Concierge on WhatsApp",
         loupeHint: "HOVER OVER THE PHOTOGRAPH TO ACTIVATE THE 3X GEMOLOGICAL LOUPE",
-        viewMacro: "Macro View on Velvet",
-        viewClean: "Silhouette View",
+        viewMacro: "Macro View on Velvet", viewClean: "Silhouette View",
         chainLabel: "SELECT INCLUDED 950 STERLING SILVER CHAIN LENGTH:",
-        chain1: "45 cm · Collarbone",
-        chain2: "50 cm · Princess",
-        chain3: "60 cm · Matinee",
-        certBtn: "View Official Certificate of Authenticity (1 of 1)",
-        giftLabel: "Complimentary Gift Chest & Calligraphic Note:",
-        giftPlaceholder: "Write your personal dedication to be included in a wax sealed card..."
+        chain1: "45 cm · Collarbone", chain2: "50 cm · Princess", chain3: "60 cm · Matinee",
+        certBtn: "View Certificate of Authenticity (1 of 1)"
     }
 };
 
@@ -149,7 +119,6 @@ function renderSharedHeaderAndCart() {
     const page = document.body.getAttribute('data-page');
     const t = UI_TEXT[currentLang];
 
-    // Cintillo superior de conserjería si no existe
     if (!document.getElementById('top-concierge')) {
         const topBar = document.createElement('div');
         topBar.id = 'top-concierge';
@@ -247,8 +216,7 @@ function updateCartUI() {
     let disc = cart.length === 2 ? 0.10 : (cart.length >= 3 ? 0.18 : 0);
     const finalCLP = Math.round(subtotal * (1 - disc));
     const totals = formatMoney(finalCLP);
-    const giftNote = document.getElementById('cart-gift-note') ? document.getElementById('cart-gift-note').value : '';
-    const waMsg = encodeURIComponent(`Hola, deseo coordinar la adquisición de las siguientes obras de Jorge Pérez: ${names.join(', ')}. Cadena preferida: ${selectedChain}. ${giftNote ? 'Dedicatoria caligráfica: ' + giftNote + '.' : ''} Total (${Math.round(disc*100)}% bonificación): ${totals.clp} (${totals.usd} / ${totals.eur}).`);
+    const waMsg = encodeURIComponent(`Hola, deseo coordinar la adquisición de las siguientes obras de Jorge Pérez: ${names.join(', ')}. Cadena: ${selectedChain}. Total (${Math.round(disc*100)}% bonificación): ${totals.clp} (${totals.usd} / ${totals.eur}).`);
 
     drawer.innerHTML = `
         <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border-hairline);padding-bottom:1rem">
@@ -258,24 +226,20 @@ function updateCartUI() {
         <div class="cart-items-list">
             ${cart.length === 0 ? `<p style="color:var(--text-muted);font-size:0.84rem;line-height:1.7">${t.cartEmpty}</p>` : itemsHtml}
         </div>
-        <div style="margin-bottom:0.8rem">
-            <label style="display:block;font-size:0.65rem;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:0.35rem">${t.giftLabel}</label>
-            <textarea id="cart-gift-note" rows="2" placeholder="${t.giftPlaceholder}" style="width:100%;padding:0.6rem;background:var(--bg-surface);border:1px solid var(--border-hairline);color:var(--text-main);font-family:inherit;font-size:0.75rem"></textarea>
-        </div>
         <div class="cart-footer">
             <div style="font-size:0.64rem;letter-spacing:0.15em;color:var(--accent-rose);margin-bottom:0.35rem">
                 ${disc > 0 ? `${t.cartBonusActive} (${Math.round(disc*100)}%)` : t.cartBonusHint}
             </div>
             <div style="font-family:'Cormorant Garamond',serif;font-size:2rem">${totals.primary}</div>
             <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:1.1rem">${totals.all}</div>
-            <a href="[https://wa.me/$](https://wa.me/$){WHATSAPP_NUMBER}?text=${waMsg}" target="_blank" class="btn-luxury btn-soft full-width">
+            <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${waMsg}" target="_blank" class="btn-luxury btn-soft full-width">
                 ${t.cartCheckout}
             </a>
         </div>
     `;
 }
 
-// 1. Inicializador Portada con Hero Horizontal de las 9 Joyas + Vitrina Completa
+// 1. Inicializador Portada + Controlador Inteligente del Video (Suprime voz errónea en 11.8s)
 function initHomePage() {
     const t = UI_TEXT[currentLang];
     const ribbon = document.getElementById('hero-horizontal-ribbon');
@@ -308,8 +272,53 @@ function initHomePage() {
         });
     }
 
+    setupCollectionVideoFilter();
+
     const homeGrid = document.getElementById('home-full-showcase');
     if (homeGrid) renderJewelCardsInto(homeGrid, JEWELS);
+}
+
+// Controlador que silencia suavemente los últimos 3 segundos del video (desde 11.8s) y muestra el cierre escrito correcto
+function setupCollectionVideoFilter() {
+    const vid = document.getElementById('collection-film');
+    const overlay = document.getElementById('video-closing-overlay');
+    const soundBtn = document.getElementById('video-sound-btn');
+    if (!vid) return;
+
+    let userUnmuted = false;
+
+    vid.addEventListener('timeupdate', () => {
+        // Entre el segundo 0 y 11.4 la voz es perfecta; desde 11.4 hacemos fade out y en 11.8 silenciamos por completo la frase errónea
+        if (vid.currentTime >= 11.4 && vid.currentTime < 11.8) {
+            if (userUnmuted) {
+                const factor = Math.max(0, (11.8 - vid.currentTime) / 0.4);
+                vid.volume = factor;
+            }
+        } else if (vid.currentTime >= 11.8) {
+            vid.volume = 0;
+            if (overlay) overlay.classList.add('visible');
+        } else {
+            if (userUnmuted) vid.volume = 0.9;
+            if (overlay) overlay.classList.remove('visible');
+        }
+    });
+
+    if (soundBtn) {
+        soundBtn.addEventListener('click', () => {
+            userUnmuted = !userUnmuted;
+            vid.muted = !userUnmuted;
+            if (userUnmuted) {
+                vid.currentTime = 0;
+                vid.volume = 0.9;
+                vid.play();
+                soundBtn.textContent = '🔊 Reproduciendo con Voz (Cierre de 3s Corregido)';
+                soundBtn.classList.add('active');
+            } else {
+                soundBtn.textContent = '🔈 Activar Narración del Video';
+                soundBtn.classList.remove('active');
+            }
+        });
+    }
 }
 
 function renderJewelCardsInto(gridElement, list) {
@@ -359,7 +368,6 @@ function initCatalogPage(filterCat) {
     renderJewelCardsInto(grid, list);
 }
 
-// 3. Ficha Individual con Lupa Gemológica 3x, Selector de Cadena y Certificado Oficial
 function initSingleJewelPage() {
     const t = UI_TEXT[currentLang];
     const params = new URLSearchParams(window.location.search);
@@ -379,8 +387,8 @@ function initSingleJewelPage() {
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2.2rem;border-bottom:1px solid var(--border-hairline);padding-bottom:1rem">
             <a href="coleccion.html" class="control-pill">${t.backCat}</a>
             <div style="display:flex;gap:0.8rem">
-                <a href="joya.html?id=${prevItem.id}" class="control-pill">← ${prevItem.code}: ${prevItem.title[currentLang]}</a>
-                <a href="joya.html?id=${nextItem.id}" class="control-pill">${nextItem.code}: ${nextItem.title[currentLang]} →</a>
+                <a href="joya.html?id=${prevItem.id}" class="control-pill">← ${prevItem.code}</a>
+                <a href="joya.html?id=${nextItem.id}" class="control-pill">${nextItem.code} →</a>
             </div>
         </div>
 
@@ -400,11 +408,11 @@ function initSingleJewelPage() {
             </div>
 
             <div>
-                <span class="eyebrow">${item.code} · REGISTRO DE ARCHIVO: ${item.reg}</span>
+                <span class="eyebrow">${item.code} · PIEZA ÚNICA EXISTENTE UNA SOLA VEZ · REGISTRO ${item.reg}</span>
                 <h1 class="page-title" style="margin-bottom:0.35rem">${item.title[currentLang]}</h1>
-                <p style="color:var(--accent-rose);font-size:0.84rem;letter-spacing:0.08em;margin-bottom:1.6rem">${item.materials[currentLang]}</p>
+                <p style="color:var(--accent-rose);font-size:0.84rem;letter-spacing:0.08em;margin-bottom:1.5rem">${item.materials[currentLang]}</p>
 
-                <div style="padding:1.5rem 1.8rem;background:var(--bg-elevated);border:1px solid var(--border-hairline);margin-bottom:1.8rem;box-shadow:var(--shadow-luxury);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+                <div style="padding:1.5rem 1.8rem;background:var(--bg-elevated);border:1px solid var(--border-hairline);margin-bottom:1.6rem;box-shadow:var(--shadow-luxury);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
                     <div>
                         <div style="font-family:'Cormorant Garamond',serif;font-size:2.3rem">${p.primary}</div>
                         <div style="font-size:0.78rem;color:var(--text-muted);margin-top:0.2rem">${p.all}</div>
@@ -412,7 +420,6 @@ function initSingleJewelPage() {
                     <button class="control-pill active" onclick="openCertModal()">📜 ${t.certBtn}</button>
                 </div>
 
-                <!-- Selector de Cadena de Plata 950 -->
                 <div class="chain-selector-box">
                     <span style="font-size:0.65rem;letter-spacing:0.16em;color:var(--text-muted)">${t.chainLabel}</span>
                     <div class="chain-options">
@@ -425,47 +432,46 @@ function initSingleJewelPage() {
                 <div class="story-chapter">
                     <h3>I. Génesis y Arquitectura</h3>
                     <p>${item.storyPart1[currentLang]}</p>
-                    <h3 style="margin-top:1.3rem">II. Lectura Mineralógica</h3>
+                    <h3 style="margin-top:1.2rem">II. Tiempo Hecho Piedra</h3>
                     <p>${item.storyPart2[currentLang]}</p>
                 </div>
 
                 <table class="specs-table">
-                    <tr><td>Maestro Orfebre</td><td>Jorge Pérez (Taller de Valparaíso, Chile)</td></tr>
-                    <tr><td>Registro de Taller</td><td>${item.reg} · Ejemplar Único (1 de 1)</td></tr>
-                    <tr><td>Tiempo de Forja</td><td>${item.hours} de trabajo manual sin moldes</td></tr>
-                    <tr><td>Aleación Metálica</td><td>Plata Ley 950 fundida y laminada en taller</td></tr>
+                    <tr><td>Maestro Orfebre</td><td>Jorge Pérez (Valparaíso, Chile)</td></tr>
+                    <tr><td>Carácter de Edición</td><td>Ejemplar irrepetible (1 de 1) · Registro ${item.reg}</td></tr>
+                    <tr><td>Tiempo de Forja</td><td>${item.hours} de trabajo manual</td></tr>
+                    <tr><td>Aleación Metálica</td><td>Plata Ley 950 fundida y forjada sin moldes</td></tr>
                     <tr><td>Gema Principal</td><td>Rodocrosita natural (${item.stoneCut})</td></tr>
                     <tr><td>Procedencia Geológica</td><td>${item.origin}</td></tr>
                     <tr><td>Dureza y Lustre</td><td>${item.mohs}</td></tr>
                     <tr><td>Dimensiones y Peso</td><td>${item.dimensions} · ${item.weight}</td></tr>
                 </table>
 
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.8rem">
                     <button class="btn-luxury btn-soft" onclick="addToCart('${item.id}')">${t.addToCart}</button>
                     <a href="probador.html?id=${item.id}" class="btn-luxury">${t.tryBtn}</a>
                 </div>
-                <a href="[https://wa.me/$](https://wa.me/$){WHATSAPP_NUMBER}?text=${waDirect}" target="_blank" class="btn-luxury full-width" style="margin-top:0.85rem">
+                <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${waDirect}" target="_blank" class="btn-luxury full-width" style="margin-top:0.85rem">
                     ${t.waDirect} (+56 9 5625 8569)
                 </a>
             </div>
         </div>
 
-        <!-- Modal de Certificado Oficial de Autenticidad -->
         <div class="cert-modal" id="cert-modal" onclick="closeCertModal()">
             <div class="cert-paper" onclick="event.stopPropagation()">
-                <span style="font-size:0.65rem;letter-spacing:0.3em;color:#8C7355">REPÚBLICA DE CHILE · TALLER DE ALTA JOYERÍA DE VALPARAÍSO</span>
-                <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:400;margin:0.6rem 0">Certificado de Pieza Única</h2>
-                <p style="font-size:0.78rem;color:#524E4A;margin-bottom:1.8rem">COLECCIÓN HECHA DE TIEMPO · EDICIÓN NUMERADA 1 DE 1</p>
-                <div style="text-align:left;font-size:0.84rem;line-height:1.9;border-top:1px solid #D8CBB8;border-bottom:1px solid #D8CBB8;padding:1.4rem 0;margin-bottom:1.6rem">
-                    <p>Por medio del presente documento se certifica que la obra <strong>${item.code}: ${item.title[currentLang]}</strong> (Registro Oficial <strong>${item.reg}</strong>) ha sido íntegramente forjada, engastada y bruñida a mano en <strong>Plata Ley 950</strong> y <strong>Rodocrosita Austral Natural</strong> (${item.stoneCut}, ${item.weight}, ${item.dimensions}).</p>
-                    <p style="margin-top:0.8rem">Al haberse realizado sin moldes de reproducción ni vaciados en serie tras <strong>${item.hours}</strong>, se garantiza que no existe ningún duplicado de esta pieza.</p>
+                <span style="font-size:0.65rem;letter-spacing:0.28em;color:#8C7355">TALLER DE ALTA JOYERÍA DE VALPARAÍSO · CHILE</span>
+                <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.3rem;font-weight:400;margin:0.5rem 0">Certificado de Pieza Única</h2>
+                <p style="font-size:0.75rem;color:#524E4A;margin-bottom:1.5rem">LA RODOCROSITA ES TIEMPO HECHO PIEDRA · EDICIÓN 1 DE 1</p>
+                <div style="text-align:left;font-size:0.84rem;line-height:1.85;border-top:1px solid #D8CBB8;border-bottom:1px solid #D8CBB8;padding:1.3rem 0;margin-bottom:1.5rem">
+                    <p>Se certifica que la obra <strong>${item.code}: ${item.title[currentLang]}</strong> (Registro <strong>${item.reg}</strong>) ha sido forjada a mano en <strong>Plata Ley 950</strong> y <strong>Rodocrosita Natural</strong> (${item.stoneCut}, ${item.weight}, ${item.dimensions}).</p>
+                    <p style="margin-top:0.7rem">La rodocrosita crece capa sobre capa durante miles de años. Cada banda rosa y blanca es irrepetible y esta pieza existe una sola vez.</p>
                 </div>
-                <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:#524E4A;margin-bottom:1.8rem">
-                    <div><strong>Lugar de Creación:</strong> Cerro Alegre, Valparaíso</div>
+                <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:#524E4A;margin-bottom:1.5rem">
+                    <div><strong>Autor:</strong> Maestro Orfebre en Valparaíso</div>
                     <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-style:italic">Jorge Pérez</div>
                 </div>
                 <div style="display:flex;gap:1rem;justify-content:center">
-                    <button class="btn-luxury" style="border-color:#181715;color:#181715" onclick="window.print()">Imprimir / Guardar en PDF</button>
+                    <button class="btn-luxury" style="border-color:#181715;color:#181715" onclick="window.print()">Imprimir / Guardar PDF</button>
                     <button class="btn-luxury" style="border-color:#8C7355;color:#8C7355" onclick="closeCertModal()">Cerrar</button>
                 </div>
             </div>
@@ -496,9 +502,7 @@ function setupGemologicalLoupe() {
         loupe.style.left = `${x - 87}px`;
         loupe.style.top = `${y - 87}px`;
         loupe.style.backgroundSize = `${rect.width * zoom}px ${rect.height * zoom}px`;
-        const bgX = (x / rect.width) * 100;
-        const bgY = (y / rect.height) * 100;
-        loupe.style.backgroundPosition = `${bgX}% ${bgY}%`;
+        loupe.style.backgroundPosition = `${(x / rect.width) * 100}% ${(y / rect.height) * 100}%`;
     });
 }
 
@@ -529,7 +533,6 @@ function closeCertModal() {
     if (m) m.classList.remove('open');
 }
 
-// 4. Probador Virtual
 function initTryOnPage() {
     const params = new URLSearchParams(window.location.search);
     const startId = params.get('id') || '01';
@@ -599,7 +602,6 @@ function setupArDragging() {
     window.addEventListener('touchmove', e => { if (e.touches[0]) move(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true });
 }
 
-// 5. Página de Coleccionistas
 function initPromosPage() {
     const grid = document.getElementById('promo-selector-grid');
     if (!grid) return;
@@ -657,7 +659,7 @@ function renderPromoSummaryBox() {
         <div style="font-size:0.85rem;color:var(--text-muted);text-decoration:${disc>0?'line-through':'none'}">Suma individual: ${before.all}</div>
         <div style="font-family:'Cormorant Garamond',serif;font-size:2.9rem;margin:0.4rem 0">${after.primary}</div>
         <div style="font-size:0.84rem;color:var(--accent-rose);margin-bottom:1.6rem">${after.all}</div>
-        <a href="[https://wa.me/$](https://wa.me/$){WHATSAPP_NUMBER}?text=${msg}" target="_blank" class="btn-luxury btn-soft">
+        <a href="https://wa.me/${WHATSAPP_NUMBER}?text=${msg}" target="_blank" class="btn-luxury btn-soft">
             Reservar este Conjunto por WhatsApp (+56 9 5625 8569)
         </a>
     `;
