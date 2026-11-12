@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mídete las Joyas en Vivo · Jorge Pérez Alta Joyería</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body data-page="tryon">
+    <canvas id="webgl-bg"></canvas>
+    <header class="navbar" id="shared-navbar"></header>
+    <aside class="cart-drawer" id="shared-cart-drawer"></aside>
+
+    <div class="page-shell">
+        <main class="page-container">
+    <div class="page-header">
+        <span class="eyebrow">REALIDAD AUMENTADA EN NAVEGADOR</span>
+        <h1 class="page-title">Mídete las Joyas</h1>
+        <p class="page-lead">
+            Autoriza tu cámara para transformar esta sala en un espejo privado. Elige cualquiera de las nueve piezas a la derecha, arrástrala sobre tu clavícula y ajusta su tamaño.
+        </p>
+    </div>
+
+    <div class="tryon-layout">
+        <div class="camera-stage" id="camera-stage">
+            <video id="webcam-video" autoplay playsinline muted></video>
+            <div class="camera-placeholder" id="camera-placeholder">
+                <span class="eyebrow">ESPEJO DE ALTA JOYERÍA</span>
+                <p style="max-width:420px;line-height:1.7;color:var(--text-secondary)">
+                    Tu imagen no se guarda ni se envía a ningún servidor; todo el procesamiento ocurre de manera privada en tu pantalla.
+                </p>
+                <button class="btn-luxury btn-rose" onclick="startCamera()">Encender Cámara Ahora</button>
+            </div>
+            <div class="neck-guide"></div>
+            <div id="ar-jewel-wrapper" class="ar-jewel-wrapper">
+                <img id="ar-jewel-img" src="assets/joyas/01_rosa_de_los_vientos_clean.png" alt="Joya en espejo">
+            </div>
+        </div>
+
+        <div>
+            <span class="eyebrow">SELECTOR INTERACTIVO</span>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400">Elige la Pieza a Probar</h3>
+            <div id="tryon-thumbs" class="tryon-thumbs"></div>
+
+            <div style="margin:1.6rem 0">
+                <label style="display:block;font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.5rem">
+                    Escala de la Joya en el Espejo
+                </label>
+                <input type="range" min="65" max="240" value="140" style="width:100%;accent-color:var(--accent-rose)" oninput="document.getElementById('ar-jewel-wrapper').style.width=this.value+'px'">
+            </div>
+
+            <div class="pillar-card" style="margin-top:1.5rem">
+                <h4 id="ar-title" style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400"></h4>
+                <p id="ar-price" style="color:var(--accent-rose);margin:0.4rem 0 1.2rem;font-size:0.85rem"></p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem">
+                    <a id="ar-story-link" href="joya.html?id=01" class="btn-luxury">Ver Historia</a>
+                    <button id="ar-add-cart" class="btn-luxury btn-rose">+ Añadir al Cofre</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+        <footer class="footer">
+            JORGE PÉREZ · ALTA JOYERÍA DE AUTOR · VALPARAÍSO, CHILE · CONTACTO DIRECTO: +56 9 5625 8569
+        </footer>
+    </div>
+
+    <audio id="bg-music" loop preload="none">
+        <source src="assets/audio/saxophone-ambient.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="js/catalog.js"></script>
+    <script src="js/bg3d.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

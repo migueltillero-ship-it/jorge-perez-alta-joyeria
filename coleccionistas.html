@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coleccionistas y Promociones · Jorge Pérez Alta Joyería</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body data-page="promos">
+    <canvas id="webgl-bg"></canvas>
+    <header class="navbar" id="shared-navbar"></header>
+    <aside class="cart-drawer" id="shared-cart-drawer"></aside>
+
+    <div class="page-shell">
+        <main class="page-container">
+    <div class="page-header">
+        <span class="eyebrow">PROGRAMA DE COLECCIONISTAS · ADQUISICIÓN PRIVADA</span>
+        <h1 class="page-title">Compras, Precios y Privilegios por Conjunto</h1>
+        <p class="page-lead">
+            Para quienes desean resguardar más de una pieza de la colección <em>Hecha de Tiempo</em>, el taller de Jorge Pérez otorga condiciones preferenciales automáticas en las tres divisas.
+        </p>
+    </div>
+
+    <div class="bio-pillars" style="grid-template-columns:repeat(3,1fr);margin-top:0">
+        <div class="pillar-card">
+            <span class="eyebrow">ADQUISICIÓN INDIVIDUAL · 1 PIEZA</span>
+            <h3>Certificación de Autor</h3>
+            <p>Incluye estuche individual forrado en lino oscuro, paño de conservación para plata ley 950 y certificado caligráfico de pieza única.</p>
+        </div>
+        <div class="pillar-card" style="border-color:var(--accent-rose)">
+            <span class="eyebrow">DÚO DE COLECCIÓN · 2 PIEZAS</span>
+            <h3>10% de Bonificación</h3>
+            <p>Descuento directo del 10% sobre el valor total en CLP, USD y EUR, cofre doble en madera nativa chilena y envío internacional asegurado sin cargo.</p>
+        </div>
+        <div class="pillar-card" style="border-color:var(--accent-rose)">
+            <span class="eyebrow">TRILOGÍA DEL TIEMPO · 3 O MÁS PIEZAS</span>
+            <h3>18% de Bonificación</h3>
+            <p>Descuento directo del 18%, cofre de colección numerado de tres cavidades, dossier firmado por Jorge Pérez y mantenimiento vitalicio en taller.</p>
+        </div>
+    </div>
+
+    <div class="pillar-card" id="promo-live-calculation" style="text-align:center;margin:3rem 0;padding:3rem"></div>
+
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;margin-bottom:1.5rem;text-align:center">
+        Selecciona las Piezas para Simular tu Conjunto
+    </h3>
+    <div id="promo-selector-grid" class="catalog-grid"></div>
+</main>
+        <footer class="footer">
+            JORGE PÉREZ · ALTA JOYERÍA DE AUTOR · VALPARAÍSO, CHILE · CONTACTO DIRECTO: +56 9 5625 8569
+        </footer>
+    </div>
+
+    <audio id="bg-music" loop preload="none">
+        <source src="assets/audio/saxophone-ambient.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="js/catalog.js"></script>
+    <script src="js/bg3d.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
