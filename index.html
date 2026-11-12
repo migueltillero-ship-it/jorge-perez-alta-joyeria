@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jorge Pérez · Alta Joyería de Autor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Barra de Navegación -->
+    <header class="navbar">
+        <div class="brand">
+            <span class="brand-name">JORGE PÉREZ</span>
+            <span class="brand-sub" data-i18n="brandSub">ALTA JOYERÍA · CHILE</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#inicio" data-i18n="navHome">Inicio</a>
+            <a href="#coleccion" data-i18n="navCollection">Las 9 Joyas (3D)</a>
+            <a href="#probador" data-i18n="navTryOn">Mídete las Joyas</a>
+            <a href="#promociones" data-i18n="navPromos">Coleccionistas</a>
+            <a href="#artista" data-i18n="navArtist">Jorge Pérez</a>
+        </nav>
+        <div class="controls">
+            <div class="lang-switch">
+                <button onclick="setLanguage('es')" class="active" id="btn-es">ES</button>
+                <span>·</span>
+                <button onclick="setLanguage('fr')" id="btn-fr">FR</button>
+                <span>·</span>
+                <button onclick="setLanguage('en')" id="btn-en">EN</button>
+            </div>
+            <button id="audio-toggle" class="audio-btn">
+                <span>♪</span> <span data-i18n="audioLabel">Saxofón</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Portada Inmersiva -->
+    <section id="inicio" class="hero" style="background-image: url('assets/fondos/Gemini_Generated_Image_17gvdm17gvdm17gv.jpg');">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="eyebrow" data-i18n="heroEyebrow">COLECCIÓN DE ALTA JOYERÍA · PIEZAS ÚNICAS</p>
+            <h1 data-i18n="heroTitle">Hecha de Tiempo</h1>
+            <p class="hero-desc" data-i18n="heroSubtitle">Nueve esculturas íntimas en plata ley 950 y rodocrosita austral. Forjadas a mano sin moldes ni repeticiones.</p>
+            <div class="hero-actions">
+                <a href="#coleccion" class="btn-luxury" data-i18n="heroCta1">Explorar Colección 3D</a>
+                <a href="#probador" class="btn-luxury btn-outline" data-i18n="heroCta2">Probador con Cámara</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo con Visor 3D e Historias Individuales -->
+    <section id="coleccion" class="section">
+        <div class="section-header">
+            <span class="section-tag" data-i18n="catTag">EXPOSICIÓN INTERACTIVA 3D</span>
+            <h2 data-i18n="catTitle">Cada Joya, Una Historia</h2>
+            <p class="currency-note" data-i18n="catNote">Mueve el cursor sobre cada pieza para apreciar su relieve tridimensional. Haz clic para leer su historia completa.</p>
+        </div>
+        <div id="catalog-grid" class="catalog-grid"></div>
+    </section>
+
+    <!-- Sección Mídete las Joyas (WebRTC Camera Try-On) -->
+    <section id="probador" class="section tryon-section">
+        <div class="section-header">
+            <span class="section-tag" data-i18n="tryTag">EXPERIENCIA VIRTUAL EN VIVO</span>
+            <h2 data-i18n="tryTitle">Mídete las Joyas</h2>
+            <p class="currency-note" data-i18n="tryDesc">Activa tu cámara para proyectar las piezas sobre tu cuello en tiempo real. Puedes arrastrar la joya y ajustar su escala.</p>
+        </div>
+
+        <div class="tryon-layout">
+            <div class="camera-stage" id="camera-stage">
+                <video id="webcam-video" autoplay playsinline muted></video>
+                <div class="camera-placeholder" id="camera-placeholder">
+                    <p data-i18n="camPrompt">Autoriza el uso de tu cámara para iniciar el espejo virtual</p>
+                    <button class="btn-luxury" onclick="startCamera()" data-i18n="camBtn">Activar Cámara</button>
+                </div>
+                <div class="neck-guide"></div>
+                <!-- Joya superpuesta arrastrable -->
+                <div id="ar-jewel-wrapper" class="ar-jewel-wrapper">
+                    <img id="ar-jewel-img" src="assets/joyas/01_rosa_de_los_vientos_clean.png" alt="Joya AR">
+                </div>
+            </div>
+
+            <div class="tryon-controls">
+                <h3 data-i18n="trySelectTitle">Selecciona la Pieza</h3>
+                <div id="tryon-thumbs" class="tryon-thumbs"></div>
+
+                <div class="slider-group">
+                    <label data-i18n="tryScaleLabel">Ajustar Tamaño de la Joya</label>
+                    <input type="range" id="ar-scale" min="60" max="240" value="135" oninput="updateArScale(this.value)">
+                </div>
+
+                <div class="tryon-selected-info">
+                    <h4 id="ar-info-title">Rosa de los Vientos</h4>
+                    <p id="ar-info-price"></p>
+                    <a id="ar-whatsapp-btn" href="#" target="_blank" class="btn-luxury full-width" data-i18n="tryWaBtn">Consultar por esta pieza en WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promociones para Coleccionistas y Compra Múltiple -->
+    <section id="promociones" class="section promo-section">
+        <div class="section-header">
+            <span class="section-tag" data-i18n="promoTag">ADQUISICIÓN DE CONJUNTOS</span>
+            <h2 data-i18n="promoTitle">Privilegios por Compra de Varias Piezas</h2>
+            <p class="currency-note" data-i18n="promoSub">Selecciona dos o más obras del catálogo para calcular automáticamente tu bonificación de coleccionista.</p>
+        </div>
+
+        <div class="promo-tiers">
+            <div class="tier-card">
+                <span class="tier-badge" data-i18n="tier1Badge">DÚO DE AUTOR · 2 PIEZAS</span>
+                <h3 class="tier-discount">10% <span data-i18n="offWord">Bonificación</span></h3>
+                <p data-i18n="tier1Desc">Incluye estuche doble de madera noble hecho a medida y envío asegurado sin costo a domicilio.</p>
+            </div>
+            <div class="tier-card featured">
+                <span class="tier-badge" data-i18n="tier2Badge">TRILOGÍA DEL TIEMPO · 3 O MÁS PIEZAS</span>
+                <h3 class="tier-discount">18% <span data-i18n="offWord">Bonificación</span></h3>
+                <p data-i18n="tier2Desc">Incluye cofre de colección numerado, certificado caligráfico firmado por Jorge Pérez y mantenimiento vitalicio en taller.</p>
+            </div>
+        </div>
+
+        <div class="bundle-builder">
+            <h3 data-i18n="bundleTitle">Configura tu Conjunto Personalizado</h3>
+            <div id="bundle-Checkboxes" class="bundle-grid"></div>
+            <div class="bundle-summary">
+                <div>
+                    <span class="section-tag" id="bundle-status">0 PIEZAS SELECCIONADAS</span>
+                    <div class="bundle-total-clp" id="bundle-clp">$0 CLP</div>
+                    <div class="bundle-total-sub" id="bundle-sub">USD $0 · EUR €0</div>
+                </div>
+                <a id="bundle-wa-btn" href="https://wa.me/56956258569" target="_blank" class="btn-luxury" data-i18n="bundleCta">Reservar Conjunto por WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Biografía de Jorge Pérez (El Orfebre Chileno) -->
+    <section id="artista" class="section artist-section">
+        <div class="artist-container">
+            <div class="artist-portrait-box">
+                <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=1200&q=85" alt="Manos del maestro orfebre Jorge Pérez" class="artist-img">
+                <span class="img-caption" data-i18n="artistCaption">Taller de orfebrería · Trabajo manual sobre plata ley 950</span>
+            </div>
+            <div class="artist-bio">
+                <span class="section-tag" data-i18n="artistTag">EL MAESTRO ORFEBRE</span>
+                <h2>Jorge Pérez</h2>
+                <p class="artist-role" data-i18n="artistRole">Valparaíso, Chile, 1968 · Orfebre y Escultor en Metales Nobles</p>
+                <p data-i18n="artistP1">Nacido entre la bruma salina de los cerros de Valparaíso y formado en la silenciosa contemplación de la cordillera andina, Jorge Pérez descubrió a temprana edad que los metales y las piedras poseen una pulsación propia. Hijo de un relojero de precisión y nieto de canteros del norte chico, creció rodeado de calibres antiguos, limas de acero y minerales en bruto traídos desde Atacama.</p>
+                <p data-i18n="artistP2">Tras tres décadas dedicadas al oficio del fuego, el yunque y el buril, su taller funciona bajo una regla inquebrantable: jamás forzar la piedra a entrar en un molde prefabricado. Cada corte de rodocrosita permanece semanas sobre su banco de madera hasta que la veta mineral revela la arquitectura de plata ley 950 que debe abrazarla.</p>
+                <div class="artist-contact-box">
+                    <p data-i18n="contactDirect">Atención privada y reservas directas:</p>
+                    <a href="https://wa.me/56956258569?text=Hola,%20quisiera%20recibir%20atenci%C3%B3n%20personalizada%20sobre%20la%20colecci%C3%B3n%20de%20Jorge%20P%C3%A9rez." target="_blank" class="btn-luxury">WhatsApp Directo: +56 9 5625 8569</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Detallado con Visor 3D e Historia Completa -->
+    <div id="jewel-modal" class="modal hidden">
+        <div class="modal-backdrop" onclick="closeModal()"></div>
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <div class="modal-img-box" id="modal-3d-box">
+                <img id="modal-img" src="" alt="Joya">
+                <span class="badge-3d">360° INTERACTIVO</span>
+            </div>
+            <div class="modal-info">
+                <span id="modal-code" class="section-tag"></span>
+                <h3 id="modal-title"></h3>
+                <p id="modal-materials" class="modal-materials"></p>
+                <div class="story-box">
+                    <h4 data-i18n="modalStoryHeading">Historia e Inspiración de la Pieza</h4>
+                    <p id="modal-desc" class="modal-desc"></p>
+                </div>
+                <div class="price-box">
+                    <div class="price-main" id="modal-clp"></div>
+                    <div class="price-equiv">
+                        <span id="modal-usd"></span> · <span id="modal-eur"></span>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <a id="modal-inquire" href="#" target="_blank" class="btn-luxury full-width">WhatsApp (+56 9 5625 8569)</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/56956258569?text=Hola,%20vengo%20del%20cat%C3%A1logo%20oficial%20de%20Jorge%20P%C3%A9rez%20Alta%20Joyer%C3%ADa." target="_blank" class="wa-float">
+        WhatsApp · +56 9 5625 8569
+    </a>
+
+    <!-- Audio Sintetizado + MP3 de Saxofón -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="assets/audio/saxophone-ambient.mp3" type="audio/mpeg">
+    </audio>
+
+    <footer class="footer">
+        <p>JORGE PÉREZ · ALTA JOYERÍA DE AUTOR · CONTACTO OFICIAL: +56 9 5625 8569</p>
+    </footer>
+
+    <script src="js/i18n.js"></script>
+    <script src="js/catalog.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
+
