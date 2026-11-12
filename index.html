@@ -1,116 +1,28 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colección Hecha de Tiempo · Jorge Pérez Alta Joyería</title>
+    <title>Jorge Pérez · Hecha de Tiempo</title>
+    <meta name="description" content="Hecha de Tiempo: nueve obras únicas de alta joyería en plata y rodocrosita de Jorge Pérez, Valparaíso, Chile.">
+    <meta property="og:title" content="Jorge Pérez · Hecha de Tiempo">
+    <meta property="og:description" content="Nueve obras únicas en plata y rodocrosita.">
+    <meta property="og:image" content="assets/piezas/01_ambiente.jpg">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 fill=%22%230D192B%22/%3E%3Ccircle cx=%2232%22 cy=%2236%22 r=%2213%22 fill=%22%23D48C98%22 stroke=%22%23E8E8E8%22 stroke-width=%224%22/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap">
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body data-page="home">
-    <div id="floating-jewels-bg" class="Floating-jewels-stage"></div>
-    <header class="navbar" id="shared-navbar"></header>
-    <aside class="cart-drawer" id="shared-cart-drawer"></aside>
-
-    <div class="page-shell">
-        <main>
-    <section class="hero-horizontal-section">
-        <!-- Manifiesto de la Rodocrosita -->
-        <div class="manifesto-banner">
-            <div>
-                <span class="eyebrow">COLECCIÓN DE ALTA JOYERÍA · NUEVE PIEZAS ÚNICAS (I A IX)</span>
-                <h1 class="hero-main-title">Hecha de Tiempo · Jorge Pérez</h1>
-            </div>
-            <blockquote class="manifesto-quote">
-                «La rodocrosita crece capa sobre capa durante miles de años. Cada banda rosa y blanca es tiempo hecho piedra, y por eso ninguna se repite. Cada pieza de esta colección existe una sola vez.»
-            </blockquote>
-        </div>
-
-        <!-- Friso Horizontal Panorámico de las 9 Obras -->
-        <div id="hero-horizontal-ribbon" class="horizontal-collection-ribbon"></div>
-    </section>
-
-    <!-- Sala Cinematográfica con el Video de la Colección (Últimos 3 segundos de voz corregidos) -->
-    <section class="cinema-showcase">
-        <div class="cinema-grid">
-            <div>
-                <span class="eyebrow">FILM OFICIAL DE LA COLECCIÓN</span>
-                <h2 class="page-title" style="font-size:2.5rem">Tiempo Hecho Piedra, Naturaleza Hecha Joya</h2>
-                <p class="page-lead" style="margin-bottom:1.4rem">
-                    Observa en movimiento el diálogo entre el pulido espejo de la plata ley 950 y las vetas milenarias de la rodocrosita austral.
-                </p>
-                <p class="page-lead" style="margin-bottom:2rem">
-                    Cada reflejo confirma la promesa del taller de Valparaíso: ninguna piedra vuelve a repetirse jamás y cada colgante se entrega numerado y certificado como ejemplar único.
-                </p>
-                <div style="display:flex;gap:1rem;flex-wrap:wrap">
-                    <button id="video-sound-btn" class="btn-luxury btn-soft">🔈 Activar Narración del Video</button>
-                    <a href="coleccion.html" class="btn-luxury">Explorar las 9 Fichas</a>
-                </div>
-            </div>
-
-            <div class="video-frame-luxury">
-                <video id="collection-film" autoplay loop muted playsinline poster="assets/macro/07_macro.jpg">
-                    <source src="assets/video/campana_coleccion.mp4" type="video/mp4">
-                </video>
-                <!-- Cierre visual elegante que aparece exactamente del segundo 11.8 al 15.1 cuando se silencia la frase errónea -->
-                <div id="video-closing-overlay" class="video-closing-overlay">
-                    <span class="eyebrow" style="color:#E5A4AF">JORGE PÉREZ · ALTA JOYERÍA</span>
-                    <h4>Naturaleza hecha joya</h4>
-                    <p>Tiempo hecho piedra · Piezas únicas 1 de 1</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Acceso a las 4 Salas -->
-    <section class="rooms-grid">
-        <a href="coleccion.html" class="room-card">
-            <span class="eyebrow">SALA I · CATÁLOGO</span>
-            <h3>Las Nueve Obras</h3>
-            <p>Inspecciona cada pieza con lupa gemológica 3x, ficha mineralógica y valores en CLP, USD y EUR.</p>
-        </a>
-        <a href="probador.html" class="room-card">
-            <span class="eyebrow">SALA II · ESPEJO EN VIVO</span>
-            <h3>Mídete las Joyas</h3>
-            <p>Proyecta cada colgante sobre tu cuello en tiempo real utilizando la cámara de tu dispositivo.</p>
-        </a>
-        <a href="coleccionistas.html" class="room-card">
-            <span class="eyebrow">SALA III · ADQUISICIÓN</span>
-            <h3>Privilegios por Conjunto</h3>
-            <p>Bonificaciones automáticas del 10% (Dúo) y 18% (Trilogía) con cofre de madera nativa.</p>
-        </a>
-        <a href="orfebre.html" class="room-card">
-            <span class="eyebrow">SALA IV · AUTOR</span>
-            <h3>El Maestro Jorge Pérez</h3>
-            <p>Tres décadas de oficio entre los cerros de Valparaíso y la cordillera andina.</p>
-        </a>
-    </section>
-
-    <!-- Exposición Completa de las 9 Joyas en Portada -->
-    <section class="page-container" style="padding-top:1rem">
-        <div class="page-header">
-            <span class="eyebrow">EXPOSICIÓN PERMANENTE · OBRAS I A IX</span>
-            <h2 class="page-title">Catálogo General de Piezas Únicas</h2>
-            <p class="page-lead">
-                Haz clic en cualquier obra para abrir su página individual con lupa óptica y certificado de autenticidad.
-            </p>
-        </div>
-        <div id="home-full-showcase" class="catalog-grid"></div>
-    </section>
-</main>
-        <footer class="footer">
-            JORGE PÉREZ · ALTA JOYERÍA DE AUTOR · VALPARAÍSO, CHILE · CONSERJERÍA PRIVADA: +56 9 5625 8569
-        </footer>
-    </div>
-
-    <audio id="bg-music" loop preload="none">
-        <source src="assets/audio/saxophone-ambient.mp3" type="audio/mpeg">
-    </audio>
-
+<body>
+    <header class="navbar" id="nav"></header>
+    <main id="main"></main>
+    <footer class="footer" id="footer"></footer>
+    <div class="veil" id="veil"></div>
+    <aside class="cart" id="cart" aria-hidden="true" aria-label="Cofre"></aside>
+    <div class="zoom" id="zoom"><img alt=""></div>
+    <noscript><p style="padding:2rem;text-align:center">Este sitio necesita JavaScript activado.</p></noscript>
     <script src="js/catalog.js"></script>
-    <script src="js/bg3d.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
