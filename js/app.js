@@ -1,58 +1,52 @@
 ﻿const UI_TEXT = {
     es: {
         brandSub: "ALTA JOYERÍA · VALPARAÍSO, CHILE",
-        navHome: "Atelier", navCat: "Colección", navTry: "Probador Virtual", navPromo: "Adquisición", navArtist: "El Orfebre",
-        themeLight: "☀ Luz de Día", themeDark: "☾ Terciopelo Nocturno",
-        cartBtn: "Seleccionadas",
+        navHome: "Colección en Portada", navCat: "Catálogo Detallado", navTry: "Probador Virtual", navPromo: "Adquisición", navArtist: "El Orfebre",
+        themeLight: "☀ Luz de Galería", themeDark: "☾ Azul Nocturno",
+        cartBtn: "Cofre",
         cartTitle: "Cofre de Selección",
-        cartEmpty: "Tu cofre está vacío. Explora la colección para seleccionar tus piezas favoritas.",
+        cartEmpty: "Tu cofre está vacío. Selecciona una o más obras únicas para calcular tu reserva.",
         cartBonusActive: "BONIFICACIÓN DE COLECCIONISTA APLICADA",
         cartBonusHint: "Privilegio: 10% al elegir 2 piezas · 18% en 3 o más piezas",
         cartCheckout: "Coordinar Adquisición por WhatsApp",
-        featuredTag: "PIEZA EMBLEMÁTICA DE LA COLECCIÓN",
-        readStory: "Descubrir su Historia",
+        readStory: "Ver Obra e Historia",
         addToCart: "Añadir al Cofre",
         addedToCart: "✓ En tu Cofre",
         backCat: "← Volver a la Colección",
-        reliefHint: "Mueve suavemente el cursor sobre la joya para apreciar su volumen y engaste",
-        tryBtn: "Probar en el Espejo Virtual",
-        waDirect: "Atención Personalizada en WhatsApp"
+        tryBtn: "Probar en Espejo Virtual",
+        waDirect: "Atención Directa en WhatsApp"
     },
     fr: {
         brandSub: "HAUTE JOAILLERIE · VALPARAÍSO, CHILI",
-        navHome: "Atelier", navCat: "Collection", navTry: "Essayage Virtuel", navPromo: "Acquisition", navArtist: "L'Orfèvre",
-        themeLight: "☀ Lumière du Jour", themeDark: "☾ Velours Nocturne",
-        cartBtn: "Sélection",
+        navHome: "Accueil Collection", navCat: "Catalogue Détaillé", navTry: "Essayage Virtuel", navPromo: "Acquisition", navArtist: "L'Orfèvre",
+        themeLight: "☀ Galerie Claire", themeDark: "☾ Bleu Nocturne",
+        cartBtn: "Écrin",
         cartTitle: "Écrin de Sélection",
-        cartEmpty: "Votre écrin est vide. Parcourez la collection pour choisir vos pièces.",
+        cartEmpty: "Votre écrin est vide. Choisissez vos pièces uniques dans la collection.",
         cartBonusActive: "PRIVILÈGE COLLECTIONNEUR APPLIQUÉ",
         cartBonusHint: "Privilège: 10% pour 2 pièces · 18% dès 3 pièces",
-        cartCheckout: "Finaliser l'Acquisition sur WhatsApp",
-        featuredTag: "PIÈCE EMBLÉMATIQUE DE LA COLLECTION",
-        readStory: "Découvrir son Histoire",
+        cartCheckout: "Finaliser sur WhatsApp",
+        readStory: "Voir l'Œuvre et l'Histoire",
         addToCart: "Ajouter à l'Écrin",
         addedToCart: "✓ Dans l'Écrin",
         backCat: "← Retour à la Collection",
-        reliefHint: "Survolez délicatement le bijou pour apprécier son volume",
-        tryBtn: "Essayer dans le Miroir Virtuel",
+        tryBtn: "Essayer dans le Miroir",
         waDirect: "Service Privé sur WhatsApp"
     },
     en: {
         brandSub: "HIGH JEWELRY · VALPARAÍSO, CHILE",
-        navHome: "Atelier", navCat: "Collection", navTry: "Virtual Try On", navPromo: "Acquisition", navArtist: "The Goldsmith",
-        themeLight: "☀ Daylight Gallery", themeDark: "☾ Night Velvet",
+        navHome: "Collection Showcase", navCat: "Detailed Catalog", navTry: "Virtual Try On", navPromo: "Acquisition", navArtist: "The Goldsmith",
+        themeLight: "☀ Daylight Gallery", themeDark: "☾ Midnight Velvet",
         cartBtn: "Selection",
         cartTitle: "Collector Selection",
-        cartEmpty: "Your selection box is empty. Explore the collection to choose your pieces.",
+        cartEmpty: "Your selection box is empty. Choose your unique pieces from the collection.",
         cartBonusActive: "COLLECTOR PRIVILEGE APPLIED",
         cartBonusHint: "Privilege: 10% on 2 pieces · 18% on 3 or more pieces",
-        cartCheckout: "Arrange Acquisition via WhatsApp",
-        featuredTag: "SIGNATURE PIECE OF THE COLLECTION",
-        readStory: "Discover the Story",
+        cartCheckout: "Arrange via WhatsApp",
+        readStory: "View Work & Story",
         addToCart: "Add to Selection",
         addedToCart: "✓ In Selection",
         backCat: "← Back to Collection",
-        reliefHint: "Gently move your cursor over the jewel to appreciate its relief",
         tryBtn: "Try On in Virtual Mirror",
         waDirect: "Private Concierge on WhatsApp"
     }
@@ -60,7 +54,6 @@
 
 let currentLang = localStorage.getItem('jp_lang') || 'es';
 let currentCurrency = localStorage.getItem('jp_currency') || 'CLP';
-// Luminoso ("light") por defecto para transmitir calma, limpieza y elegancia
 let currentTheme = localStorage.getItem('jp_theme') || 'light';
 let cart = JSON.parse(localStorage.getItem('jp_cart') || '[]');
 
@@ -193,7 +186,7 @@ function updateCartUI() {
         const p = formatMoney(j.priceCLP);
         return `
             <div class="cart-item">
-                <img src="assets/joyas/${j.file}" onerror="this.src='assets/joyas/${j.fallback}'">
+                <img src="${j.macro}" onerror="this.src='assets/joyas/${j.fallback}'">
                 <div style="flex:1">
                     <div style="font-size:0.62rem;color:var(--accent-rose);letter-spacing:0.14em">${j.code}</div>
                     <div style="font-family:'Cormorant Garamond',serif;font-size:1.25rem">${j.title[currentLang]}</div>
@@ -230,29 +223,47 @@ function updateCartUI() {
     `;
 }
 
+// 1. Inicializador del Nuevo HERO HORIZONTAL con las 9 Joyas en Alta Resolución
 function initHomePage() {
     const t = UI_TEXT[currentLang];
-    const feat = JEWELS[0];
-    const p = formatMoney(feat.priceCLP);
-    const box = document.getElementById('hero-featured-jewel');
-    if (box) {
-        box.innerHTML = `
-            <span class="eyebrow">${feat.code} · ${t.featuredTag}</span>
-            <img src="assets/joyas/${feat.file}" onerror="this.src='assets/joyas/${feat.fallback}'" alt="${feat.title[currentLang]}">
-            <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:400;margin-top:1.2rem">${feat.title[currentLang]}</h2>
-            <p style="font-size:0.82rem;color:var(--text-muted);margin:0.5rem 0 1.5rem">${p.all}</p>
-            <a href="joya.html?id=01" class="btn-luxury">${t.readStory}</a>
-        `;
+    const ribbon = document.getElementById('hero-horizontal-ribbon');
+    if (ribbon) {
+        ribbon.innerHTML = '';
+        JEWELS.forEach((item, index) => {
+            const p = formatMoney(item.priceCLP);
+            const panel = document.createElement('a');
+            panel.href = `joya.html?id=${item.id}`;
+            panel.className = 'ribbon-panel' + (index === 0 ? ' active-panel' : '');
+            panel.addEventListener('mouseenter', () => {
+                document.querySelectorAll('.ribbon-panel').forEach(el => el.classList.remove('active-panel'));
+                panel.classList.add('active-panel');
+            });
+
+            panel.innerHTML = `
+                <img src="${item.macro}" alt="${item.title[currentLang]}" onerror="this.src='assets/joyas/${item.fallback}'">
+                <div class="ribbon-overlay">
+                    <span class="ribbon-code">${item.code}</span>
+                    <h2 class="ribbon-title">${item.title[currentLang]}</h2>
+                    <div class="ribbon-details">
+                        <div class="ribbon-price">${p.primary} · ${p.usd} · ${p.eur}</div>
+                        <span class="ribbon-cta">${t.readStory} →</span>
+                    </div>
+                </div>
+            `;
+            ribbon.appendChild(panel);
+        });
+    }
+
+    // También renderizamos la cuadrícula completa debajo por si el visitante desea verlas en formato ficha desde el inicio
+    const homeGrid = document.getElementById('home-full-showcase');
+    if (homeGrid) {
+        renderJewelCardsInto(homeGrid, JEWELS);
     }
 }
 
-function initCatalogPage(filterCat) {
+function renderJewelCardsInto(gridElement, list) {
     const t = UI_TEXT[currentLang];
-    const grid = document.getElementById('catalog-grid');
-    if (!grid) return;
-    grid.innerHTML = '';
-
-    const list = filterCat === 'all' ? JEWELS : JEWELS.filter(j => j.category === filterCat);
+    gridElement.innerHTML = '';
     list.forEach(item => {
         const p = formatMoney(item.priceCLP);
         const inCart = cart.includes(item.id);
@@ -261,24 +272,33 @@ function initCatalogPage(filterCat) {
 
         card.innerHTML = `
             <div>
-                <div class="jewel-img-wrap">
-                    <img src="assets/joyas/${item.file}" alt="${item.title[currentLang]}" onerror="this.src='assets/joyas/${item.fallback}'">
-                </div>
-                <span class="eyebrow" style="margin-bottom:0.2rem">${item.code}</span>
-                <h3 class="jewel-title">${item.title[currentLang]}</h3>
-                <p class="jewel-excerpt">${item.excerpt[currentLang]}</p>
-            </div>
-            <div>
-                <div class="jewel-price-main">${p.primary}</div>
-                <div class="jewel-price-sub">${p.all}</div>
-                <div class="card-actions">
-                    <a href="joya.html?id=${item.id}" class="btn-luxury">${t.readStory}</a>
-                    <button class="btn-luxury btn-soft" onclick="addToCart('${item.id}')">${inCart ? t.addedToCart : t.addToCart}</button>
+                <a href="joya.html?id=${item.id}" style="display:block;text-decoration:none">
+                    <div class="jewel-macro-wrap">
+                        <img src="${item.macro}" alt="${item.title[currentLang]}" onerror="this.src='assets/joyas/${item.fallback}'">
+                    </div>
+                </a>
+                <div class="jewel-card-body">
+                    <span class="eyebrow" style="margin-bottom:0.2rem">${item.code}</span>
+                    <h3 class="jewel-title">${item.title[currentLang]}</h3>
+                    <p class="jewel-excerpt">${item.excerpt[currentLang]}</p>
+                    <div class="jewel-price-main">${p.primary}</div>
+                    <div class="jewel-price-sub">${p.all}</div>
+                    <div class="card-actions">
+                        <a href="joya.html?id=${item.id}" class="btn-luxury">${t.readStory}</a>
+                        <button class="btn-luxury btn-soft" onclick="addToCart('${item.id}')">${inCart ? t.addedToCart : t.addToCart}</button>
+                    </div>
                 </div>
             </div>
         `;
-        grid.appendChild(card);
+        gridElement.appendChild(card);
     });
+}
+
+function initCatalogPage(filterCat) {
+    const grid = document.getElementById('catalog-grid');
+    if (!grid) return;
+    const list = filterCat === 'all' ? JEWELS : JEWELS.filter(j => j.category === filterCat);
+    renderJewelCardsInto(grid, list);
 }
 
 function initSingleJewelPage() {
@@ -306,14 +326,15 @@ function initSingleJewelPage() {
         </div>
 
         <div class="single-jewel-layout">
-            <div class="single-jewel-stage" id="single-3d-stage">
-                <span class="eyebrow">${item.code} · PIEZA ÚNICA (1 DE 1)</span>
-                <img id="single-3d-img" src="assets/joyas/${item.file}" onerror="this.src='assets/joyas/${item.fallback}'" alt="${item.title[currentLang]}">
-                <p style="font-size:0.68rem;letter-spacing:0.14em;color:var(--text-muted);margin-top:1.8rem">${t.reliefHint}</p>
+            <div class="single-jewel-stage">
+                <img src="${item.macro}" onerror="this.src='assets/joyas/${item.fallback}'" alt="${item.title[currentLang]}">
+                <p style="font-size:0.68rem;letter-spacing:0.16em;color:var(--text-muted);margin-top:1rem">
+                    FOTOGRAFÍA MACRO DE ALTA DEFINICIÓN · PIEZA ÚNICA NUMERADA
+                </p>
             </div>
 
             <div>
-                <span class="eyebrow">JORGE PÉREZ · COLECCIÓN HECHA DE TIEMPO</span>
+                <span class="eyebrow">${item.code} · JORGE PÉREZ ALTA JOYERÍA</span>
                 <h1 class="page-title" style="margin-bottom:0.4rem">${item.title[currentLang]}</h1>
                 <p style="color:var(--accent-rose);font-size:0.84rem;letter-spacing:0.08em;margin-bottom:1.8rem">${item.materials[currentLang]}</p>
 
@@ -323,18 +344,18 @@ function initSingleJewelPage() {
                 </div>
 
                 <div class="story-chapter">
-                    <h3>I. Inspiración y Forma</h3>
+                    <h3>I. Inspiración y Arquitectura</h3>
                     <p>${item.storyPart1[currentLang]}</p>
-                    <h3 style="margin-top:1.4rem">II. Carácter Mineral</h3>
+                    <h3 style="margin-top:1.4rem">II. Carácter de la Gema</h3>
                     <p>${item.storyPart2[currentLang]}</p>
                 </div>
 
                 <table class="specs-table">
                     <tr><td>Orfebre</td><td>Jorge Pérez (Valparaíso, Chile)</td></tr>
-                    <tr><td>Metal Noble</td><td>Plata Ley 950 forjada a mano</td></tr>
+                    <tr><td>Metal Noble</td><td>Plata Ley 950 forjada y pulida a mano</td></tr>
                     <tr><td>Gema Austral</td><td>Rodocrosita natural (${item.stoneCut})</td></tr>
                     <tr><td>Dimensiones</td><td>${item.dimensions}</td></tr>
-                    <tr><td>Peso</td><td>${item.weight}</td></tr>
+                    <tr><td>Peso en Taller</td><td>${item.weight}</td></tr>
                 </table>
 
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2.2rem">
@@ -347,18 +368,6 @@ function initSingleJewelPage() {
             </div>
         </div>
     `;
-
-    const stage = document.getElementById('single-3d-stage');
-    const img = document.getElementById('single-3d-img');
-    if (stage && img) {
-        stage.addEventListener('mousemove', e => {
-            const r = stage.getBoundingClientRect();
-            const ry = (((e.clientX - r.left) / r.width) - 0.5) * 18;
-            const rx = (0.5 - ((e.clientY - r.top) / r.height)) * 18;
-            img.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) scale(1.04)`;
-        });
-        stage.addEventListener('mouseleave', () => { img.style.transform = 'rotateX(0) rotateY(0) scale(1)'; });
-    }
 }
 
 function initTryOnPage() {
@@ -377,7 +386,7 @@ function initTryOnPage() {
                 btn.classList.add('active');
                 selectArJewel(item);
             };
-            btn.innerHTML = `<img src="assets/joyas/${item.file}" onerror="this.src='assets/joyas/${item.fallback}'"><span>${item.code}</span>`;
+            btn.innerHTML = `<img src="${item.macro}" onerror="this.src='assets/joyas/${item.fallback}'"><span>${item.code}</span>`;
             thumbs.appendChild(btn);
         });
     }
@@ -389,7 +398,7 @@ function selectArJewel(item) {
     const arImg = document.getElementById('ar-jewel-img');
     if (!arImg) return;
     arImg.src = `assets/joyas/${item.file}`;
-    arImg.onerror = () => { arImg.src = `assets/joyas/${item.fallback}`; };
+    arImg.onerror = () => { arImg.src = item.macro; };
 
     const p = formatMoney(item.priceCLP);
     document.getElementById('ar-title').textContent = `${item.code} · ${item.title[currentLang]}`;
@@ -406,7 +415,7 @@ async function startCamera() {
         video.srcObject = stream;
         placeholder.style.display = 'none';
     } catch (e) {
-        alert('Por favor autoriza la cámara en tu navegador para activar el espejo virtual.');
+        alert('Por favor autoriza el acceso a tu cámara en el navegador para activar el espejo.');
     }
 }
 
@@ -443,10 +452,10 @@ function initPromosPage() {
         card.style.borderColor = isSelected ? 'var(--accent-rose)' : 'var(--border-hairline)';
         card.innerHTML = `
             <div style="display:flex;align-items:center;gap:1.2rem;margin-bottom:1.2rem">
-                <img src="assets/joyas/${item.file}" onerror="this.src='assets/joyas/${item.fallback}'" style="width:68px;height:68px;object-fit:contain;filter:var(--jewel-drop)">
+                <img src="${item.macro}" onerror="this.src='assets/joyas/${item.fallback}'" style="width:76px;height:76px;object-fit:cover;border-radius:2px">
                 <div>
                     <span class="eyebrow" style="margin:0">${item.code}</span>
-                    <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400">${item.title[currentLang]}</h4>
+                    <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:400">${item.title[currentLang]}</h4>
                     <span style="font-size:0.8rem;color:var(--text-body)">${p.primary}</span>
                 </div>
             </div>

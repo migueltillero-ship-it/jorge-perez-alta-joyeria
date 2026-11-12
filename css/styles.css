@@ -1,31 +1,31 @@
 ﻿:root, [data-theme="light"] {
     --bg-main: #FAF8F5;
-    --bg-surface: #F3EFEA;
+    --bg-surface: #F2EFE9;
     --bg-elevated: #FFFFFF;
-    --bg-glass: rgba(250, 248, 245, 0.86);
-    --text-main: #1C1B1A;
-    --text-body: #524E4A;
-    --text-muted: #8C857E;
-    --accent-rose: #B4747E;
-    --border-hairline: rgba(28, 27, 26, 0.09);
-    --shadow-luxury: 0 24px 60px rgba(28, 27, 26, 0.05);
-    --jewel-drop: drop-shadow(0 18px 28px rgba(28, 27, 26, 0.12));
-    --bg-jewel-opacity: 0.13;
+    --bg-glass: rgba(250, 248, 245, 0.9);
+    --text-main: #18181A;
+    --text-body: #4A4845;
+    --text-muted: #85807A;
+    --accent-rose: #A86470;
+    --accent-navy: #0D192B;
+    --border-hairline: rgba(24, 24, 26, 0.09);
+    --shadow-luxury: 0 22px 55px rgba(13, 25, 43, 0.08);
+    --jewel-drop: drop-shadow(0 16px 26px rgba(13, 25, 43, 0.16));
 }
 
 [data-theme="dark"] {
-    --bg-main: #0E0E10;
-    --bg-surface: #16161A;
-    --bg-elevated: #1C1C21;
-    --bg-glass: rgba(14, 14, 16, 0.86);
-    --text-main: #F4F1EA;
-    --text-body: #C2C0BA;
-    --text-muted: #7E7C76;
-    --accent-rose: #CE8992;
-    --border-hairline: rgba(244, 241, 234, 0.1);
-    --shadow-luxury: 0 24px 60px rgba(0, 0, 0, 0.55);
-    --jewel-drop: drop-shadow(0 22px 32px rgba(0, 0, 0, 0.75));
-    --bg-jewel-opacity: 0.16;
+    --bg-main: #0A0D12;
+    --bg-surface: #11161F;
+    --bg-elevated: #161C28;
+    --bg-glass: rgba(10, 13, 18, 0.9);
+    --text-main: #F5F2EB;
+    --text-body: #C4C7CE;
+    --text-muted: #7F8592;
+    --accent-rose: #D48C98;
+    --accent-navy: #0D192B;
+    --border-hairline: rgba(245, 242, 235, 0.11);
+    --shadow-luxury: 0 24px 60px rgba(0, 0, 0, 0.65);
+    --jewel-drop: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.8));
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -36,189 +36,283 @@ html, body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
     letter-spacing: 0.02em;
-    transition: background-color 0.6s ease, color 0.6s ease;
+    transition: background-color 0.5s ease, color 0.5s ease;
     overflow-x: hidden;
 }
 
-/* Fondo de Joyas Reales en Perspectiva Flotante (Parallax Suave) */
+/* Joyas sutiles en perspectiva de fondo */
 .Floating-jewels-stage {
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 0;
-    pointer-events: none;
-    overflow: hidden;
-    perspective: 1400px;
+    position: fixed; inset: 0; width: 100vw; height: 100vh;
+    z-index: 0; pointer-events: none; overflow: hidden; perspective: 1400px;
 }
 .bg-jewel-layer {
-    position: absolute;
-    opacity: var(--bg-jewel-opacity);
-    filter: var(--jewel-drop);
-    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
-    will-change: transform;
-}
-.bg-jewel-layer.depth-far {
-    width: 240px;
-    filter: blur(5px) var(--jewel-drop);
-    opacity: calc(var(--bg-jewel-opacity) * 0.65);
-}
-.bg-jewel-layer.depth-mid {
-    width: 340px;
-    filter: blur(1.5px) var(--jewel-drop);
-}
-.bg-jewel-layer.depth-near {
-    width: 440px;
-    filter: blur(0px) var(--jewel-drop);
+    position: absolute; opacity: 0.07; filter: blur(2px);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Contenedor Principal */
 .page-shell {
-    position: relative;
-    z-index: 2;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    padding-top: 88px;
+    position: relative; z-index: 2; min-height: 100vh;
+    display: flex; flex-direction: column; padding-top: 82px;
 }
 
-/* Navegación Minimalista */
+/* Barra de Navegación */
 .navbar {
     position: fixed; top: 0; left: 0; width: 100%; z-index: 120;
     display: flex; justify-content: space-between; align-items: center;
-    padding: 1.35rem 5%; background: var(--bg-glass);
-    backdrop-filter: blur(18px); border-bottom: 1px solid var(--border-hairline);
+    padding: 1.2rem 4.5%; background: var(--bg-glass);
+    backdrop-filter: blur(16px); border-bottom: 1px solid var(--border-hairline);
 }
 .brand { text-decoration: none; display: flex; flex-direction: column; }
-.brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; letter-spacing: 0.28em; color: var(--text-main); }
-.brand-sub { font-size: 0.55rem; letter-spacing: 0.26em; color: var(--accent-rose); margin-top: 3px; text-transform: uppercase; }
+.brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; font-weight: 500; letter-spacing: 0.26em; color: var(--text-main); }
+.brand-sub { font-size: 0.55rem; letter-spacing: 0.25em; color: var(--accent-rose); margin-top: 2px; text-transform: uppercase; }
 
-.nav-links { display: flex; gap: 2.2rem; align-items: center; }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
 .nav-links a {
     color: var(--text-body); text-decoration: none; font-size: 0.7rem;
-    letter-spacing: 0.2em; text-transform: uppercase; padding-bottom: 4px;
-    border-bottom: 1px solid transparent; transition: all 0.35s ease;
+    letter-spacing: 0.18em; text-transform: uppercase; padding-bottom: 4px;
+    border-bottom: 1px solid transparent; transition: all 0.3s;
 }
-.nav-links a:hover, .nav-links a.active {
-    color: var(--text-main);
-    border-bottom-color: var(--accent-rose);
-}
+.nav-links a:hover, .nav-links a.active { color: var(--text-main); border-bottom-color: var(--accent-rose); }
 
-.controls { display: flex; align-items: center; gap: 0.8rem; }
+.controls { display: flex; align-items: center; gap: 0.75rem; }
 .control-pill {
     background: transparent; border: 1px solid var(--border-hairline); color: var(--text-main);
-    padding: 0.42rem 0.85rem; font-size: 0.65rem; letter-spacing: 0.16em; cursor: pointer;
-    text-transform: uppercase; transition: all 0.35s ease; font-family: 'Montserrat', sans-serif;
+    padding: 0.4rem 0.8rem; font-size: 0.65rem; letter-spacing: 0.14em; cursor: pointer;
+    text-transform: uppercase; transition: all 0.3s; font-family: 'Montserrat', sans-serif;
 }
 .control-pill:hover, .control-pill.active { border-color: var(--accent-rose); color: var(--accent-rose); }
-.lang-switch { display: flex; gap: 0.35rem; align-items: center; font-size: 0.68rem; color: var(--text-muted); }
+.lang-switch { display: flex; gap: 0.3rem; align-items: center; font-size: 0.68rem; color: var(--text-muted); }
 .lang-switch button {
     background: none; border: none; color: var(--text-muted); cursor: pointer;
-    font-size: 0.68rem; letter-spacing: 0.1em; padding: 0.2rem; font-family: 'Montserrat', sans-serif;
+    font-size: 0.68rem; letter-spacing: 0.08em; padding: 0.2rem;
 }
 .lang-switch button.active { color: var(--text-main); font-weight: 500; }
+
+/* ==========================================================================
+   NUEVO HERO HORIZONTAL PANORÁMICO (TODA LA COLECCIÓN DESDE EL PRIMER SEGUNDO)
+   ========================================================================== */
+.hero-horizontal-section {
+    width: 100%;
+    padding: 2.2rem 4.5% 3.5rem;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+.hero-top-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 1.8rem;
+}
+.hero-headline-box { max-width: 680px; }
+.eyebrow { display: block; font-size: 0.65rem; letter-spacing: 0.3em; color: var(--accent-rose); text-transform: uppercase; margin-bottom: 0.6rem; font-weight: 500; }
+.hero-main-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 4.2vw, 3.8rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--text-main);
+}
+.hero-subtitle-lead {
+    font-size: 0.9rem;
+    color: var(--text-body);
+    line-height: 1.75;
+    max-width: 540px;
+}
+
+/* Vitrina Horizontal Acordeón de las 9 Joyas en Alta Resolución */
+.horizontal-collection-ribbon {
+    display: flex;
+    width: 100%;
+    height: 540px;
+    gap: 10px;
+    background: var(--bg-surface);
+    padding: 12px;
+    border: 1px solid var(--border-hairline);
+    box-shadow: var(--shadow-luxury);
+}
+.ribbon-panel {
+    position: relative;
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: flex 0.65s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+    background: #091326;
+    text-decoration: none;
+    color: #F5F2EB;
+}
+.ribbon-panel:hover, .ribbon-panel.active-panel {
+    flex: 3.4;
+}
+.ribbon-panel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+    filter: brightness(0.92) contrast(1.04);
+}
+.ribbon-panel:hover img {
+    transform: scale(1.06);
+    filter: brightness(1.03) contrast(1.06);
+}
+.ribbon-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(6, 12, 24, 0.92) 0%, rgba(6, 12, 24, 0.2) 45%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.6rem 1.2rem;
+    transition: background 0.4s ease;
+}
+.ribbon-code {
+    font-size: 0.62rem;
+    letter-spacing: 0.24em;
+    color: #E2A3AE;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+.ribbon-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem;
+    font-weight: 400;
+    color: #FFFFFF;
+    margin: 0.25rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.ribbon-details {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.45s ease;
+}
+.ribbon-panel:hover .ribbon-details, .ribbon-panel.active-panel .ribbon-details {
+    max-height: 110px;
+    opacity: 1;
+    margin-top: 0.4rem;
+}
+.ribbon-price {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: #EAE6DF;
+    margin-bottom: 0.5rem;
+}
+.ribbon-cta {
+    display: inline-block;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    border-bottom: 1px solid #E2A3AE;
+    padding-bottom: 2px;
+}
+
+/* Barra de Navegación Rápida bajo el Hero Horizontal */
+.hero-bottom-strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border-hairline);
+}
 
 /* Botones de Galería */
 .btn-luxury {
     display: inline-flex; align-items: center; justify-content: center;
-    padding: 0.95rem 2.2rem; border: 1px solid var(--text-main);
+    padding: 0.9rem 2rem; border: 1px solid var(--text-main);
     background: transparent; color: var(--text-main); text-decoration: none;
-    font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
-    cursor: pointer; transition: all 0.4s ease; font-family: 'Montserrat', sans-serif;
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    cursor: pointer; transition: all 0.35s ease; font-family: 'Montserrat', sans-serif;
 }
 .btn-luxury:hover { background: var(--text-main); color: var(--bg-main); }
 .btn-soft { background: var(--text-main); color: var(--bg-main); }
 .btn-soft:hover { background: var(--accent-rose); border-color: var(--accent-rose); color: #FFFFFF; }
 .full-width { width: 100%; }
 
-/* Estructura Editorial Espaciosa */
+/* Salas de la Boutique */
+.rooms-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1.6rem; max-width: 1500px; margin: 1rem auto 5rem; padding: 0 4.5%;
+}
+.room-card {
+    background: var(--bg-elevated); border: 1px solid var(--border-hairline);
+    padding: 2.2rem 1.8rem; text-decoration: none; color: var(--text-main);
+    box-shadow: var(--shadow-luxury); transition: all 0.4s ease;
+}
+.room-card:hover { transform: translateY(-5px); border-color: var(--accent-rose); }
+.room-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; margin: 0.4rem 0 0.7rem; }
+.room-card p { font-size: 0.8rem; color: var(--text-body); line-height: 1.75; }
+
+/* Estructura General de Páginas */
 .page-container {
-    flex: 1;
-    max-width: 1220px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 4.5rem 5% 6rem;
-    animation: gentleReveal 0.7s ease;
+    flex: 1; max-width: 1340px; width: 100%; margin: 0 auto;
+    padding: 4rem 4.5% 5.5rem; animation: gentleReveal 0.6s ease;
 }
 @keyframes gentleReveal {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+.page-header { text-align: center; max-width: 700px; margin: 0 auto 4rem; }
+.page-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 4vw, 3.5rem); font-weight: 400; margin-bottom: 1rem; }
+.page-lead { font-size: 0.92rem; line-height: 1.9; color: var(--text-body); }
 
-.page-header { text-align: center; max-width: 680px; margin: 0 auto 4.5rem; }
-.eyebrow { display: block; font-size: 0.65rem; letter-spacing: 0.3em; color: var(--accent-rose); text-transform: uppercase; margin-bottom: 0.9rem; }
-.page-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 4.2vw, 3.6rem); font-weight: 400; line-height: 1.18; margin-bottom: 1.1rem; color: var(--text-main); }
-.page-lead { font-size: 0.92rem; font-weight: 300; line-height: 1.95; color: var(--text-body); }
-
-/* Portada Principal (index.html) */
-.hero-editorial {
-    min-height: calc(92vh - 88px);
-    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4.5rem;
-    align-items: center; max-width: 1220px; margin: 0 auto; padding: 3rem 5%;
-}
-.hero-pedestal {
-    background: var(--bg-elevated); border: 1px solid var(--border-hairline);
-    padding: 3.8rem 2.8rem; text-align: center; box-shadow: var(--shadow-luxury);
-    transition: transform 0.6s ease;
-}
-.hero-pedestal img { max-height: 360px; max-width: 100%; object-fit: contain; filter: var(--jewel-drop); transition: transform 0.6s ease; }
-.hero-pedestal:hover img { transform: scale(1.04) translateY(-4px); }
-
-.rooms-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem; max-width: 1220px; margin: 2rem auto 5rem; padding: 0 5%;
-}
-.room-card {
-    background: var(--bg-elevated); border: 1px solid var(--border-hairline);
-    padding: 2.2rem 1.8rem; text-decoration: none; color: var(--text-main);
-    box-shadow: var(--shadow-luxury); transition: all 0.45s ease;
-}
-.room-card:hover { transform: translateY(-5px); border-color: var(--accent-rose); }
-.room-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; font-weight: 400; margin: 0.4rem 0 0.7rem; }
-.room-card p { font-size: 0.8rem; color: var(--text-body); line-height: 1.75; }
-
-/* Catálogo de Galería (coleccion.html) */
+/* Catálogo con Fotografías Macro HD */
 .filter-bar {
     display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;
-    gap: 1rem; margin-bottom: 3rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--border-hairline);
+    gap: 1rem; margin-bottom: 2.8rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--border-hairline);
 }
 .filter-buttons { display: flex; gap: 0.6rem; flex-wrap: wrap; }
-.catalog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 2.8rem; }
+.catalog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2.5rem; }
 .jewel-card {
     background: var(--bg-elevated); border: 1px solid var(--border-hairline);
-    padding: 2.6rem 2rem; text-align: center; box-shadow: var(--shadow-luxury);
-    transition: all 0.45s ease; display: flex; flex-direction: column; justify-content: space-between;
+    box-shadow: var(--shadow-luxury); transition: all 0.4s ease;
+    display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;
 }
 .jewel-card:hover { border-color: var(--accent-rose); transform: translateY(-6px); }
-.jewel-img-wrap { height: 240px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.6rem; }
-.jewel-img-wrap img { max-height: 100%; max-width: 100%; object-fit: contain; filter: var(--jewel-drop); transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1); }
-.jewel-card:hover .jewel-img-wrap img { transform: scale(1.06); }
-.jewel-title { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 400; margin: 0.3rem 0 0.6rem; }
-.jewel-excerpt { font-size: 0.8rem; color: var(--text-body); line-height: 1.75; margin-bottom: 1.4rem; }
-.jewel-price-main { font-size: 0.98rem; font-weight: 400; letter-spacing: 0.12em; color: var(--text-main); }
-.jewel-price-sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.3rem; margin-bottom: 1.6rem; }
+.jewel-macro-wrap {
+    height: 330px; width: 100%; overflow: hidden; background: #091326; position: relative;
+}
+.jewel-macro-wrap img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.jewel-card:hover .jewel-macro-wrap img { transform: scale(1.07); }
+.jewel-card-body { padding: 2rem 1.8rem; text-align: center; }
+.jewel-title { font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; font-weight: 400; margin: 0.3rem 0 0.6rem; }
+.jewel-excerpt { font-size: 0.82rem; color: var(--text-body); line-height: 1.75; margin-bottom: 1.3rem; }
+.jewel-price-main { font-size: 1rem; font-weight: 500; letter-spacing: 0.1em; color: var(--text-main); }
+.jewel-price-sub { font-size: 0.74rem; color: var(--text-muted); margin-top: 0.25rem; margin-bottom: 1.5rem; }
 .card-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; }
-.card-actions .btn-luxury { padding: 0.7rem 0.4rem; font-size: 0.62rem; }
+.card-actions .btn-luxury { padding: 0.72rem 0.5rem; font-size: 0.63rem; }
 
-/* Ficha Individual de cada Joya (joya.html) */
-.single-jewel-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4.5rem; align-items: start; }
+/* Página Individual de cada Joya */
+.single-jewel-layout { display: grid; grid-template-columns: 1.05fr 1.1fr; gap: 4rem; align-items: start; }
 .single-jewel-stage {
     background: var(--bg-elevated); border: 1px solid var(--border-hairline);
-    padding: 4rem 3rem; text-align: center; position: sticky; top: 120px;
-    box-shadow: var(--shadow-luxury); perspective: 1000px;
+    padding: 1.2rem; text-align: center; position: sticky; top: 110px;
+    box-shadow: var(--shadow-luxury);
 }
-.single-jewel-stage img { max-height: 410px; max-width: 100%; object-fit: contain; filter: var(--jewel-drop); transition: transform 0.25s ease-out; }
+.single-jewel-stage img { width: 100%; max-height: 540px; object-fit: cover; display: block; }
 .story-chapter {
     background: var(--bg-surface); border-left: 2px solid var(--accent-rose);
-    padding: 1.8rem 2rem; margin: 1.8rem 0;
+    padding: 1.7rem 2rem; margin: 1.8rem 0;
 }
-.story-chapter h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 400; margin-bottom: 0.6rem; color: var(--text-main); }
-.story-chapter p { font-size: 0.88rem; line-height: 1.95; color: var(--text-body); }
-.specs-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
-.specs-table td { padding: 0.85rem 0; border-bottom: 1px solid var(--border-hairline); font-size: 0.82rem; color: var(--text-body); }
+.story-chapter h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 400; margin-bottom: 0.5rem; }
+.story-chapter p { font-size: 0.88rem; line-height: 1.9; color: var(--text-body); }
+.specs-table { width: 100%; border-collapse: collapse; margin: 1.8rem 0; }
+.specs-table td { padding: 0.8rem 0; border-bottom: 1px solid var(--border-hairline); font-size: 0.82rem; color: var(--text-body); }
 .specs-table td:first-child { color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.68rem; width: 40%; }
 
-/* Sala de Espejo Virtual (probador.html) */
+/* Probador Virtual y Biografía */
 .tryon-layout { display: grid; grid-template-columns: 1.3fr 1fr; gap: 3.5rem; align-items: start; }
 .camera-stage {
     position: relative; height: 540px; background: var(--bg-surface); border: 1px solid var(--border-hairline);
@@ -227,7 +321,7 @@ html, body {
 #webcam-video { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
 .camera-placeholder {
     position: absolute; inset: 0; z-index: 4; background: var(--bg-elevated);
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.3rem; padding: 2.5rem; text-align: center;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.2rem; padding: 2.5rem; text-align: center;
 }
 .neck-guide {
     position: absolute; top: 16%; width: 210px; height: 250px;
@@ -240,24 +334,23 @@ html, body {
 .ar-jewel-wrapper img { width: 100%; height: auto; filter: var(--jewel-drop); pointer-events: none; }
 .tryon-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin: 1.2rem 0; }
 .thumb-btn {
-    background: var(--bg-elevated); border: 1px solid var(--border-hairline); padding: 0.7rem;
+    background: var(--bg-elevated); border: 1px solid var(--border-hairline); padding: 0.5rem;
     cursor: pointer; text-align: center; transition: all 0.3s;
 }
 .thumb-btn.active, .thumb-btn:hover { border-color: var(--accent-rose); }
-.thumb-btn img { height: 52px; object-fit: contain; filter: var(--jewel-drop); }
-.thumb-btn span { display: block; font-size: 0.6rem; color: var(--text-muted); margin-top: 5px; letter-spacing: 0.1em; }
+.thumb-btn img { height: 60px; width: 100%; object-fit: cover; }
+.thumb-btn span { display: block; font-size: 0.6rem; color: var(--text-muted); margin-top: 4px; }
 
-/* Orfebre y Coleccionistas */
 .bio-hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: 4rem; align-items: center; margin-bottom: 4.5rem; }
 .craft-photo-frame { background: var(--bg-elevated); border: 1px solid var(--border-hairline); padding: 1.2rem; box-shadow: var(--shadow-luxury); }
 .craft-photo-frame img { width: 100%; height: 460px; object-fit: cover; display: block; }
 .craft-caption { font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.16em; margin-top: 0.85rem; text-align: center; }
 .bio-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 3rem 0; }
-.pillar-card { background: var(--bg-elevated); border: 1px solid var(--border-hairline); padding: 2.4rem 2rem; box-shadow: var(--shadow-luxury); }
-.pillar-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; margin-bottom: 0.7rem; color: var(--text-main); }
+.pillar-card { background: var(--bg-elevated); border: 1px solid var(--border-hairline); padding: 2.2rem; box-shadow: var(--shadow-luxury); }
+.pillar-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; margin-bottom: 0.7rem; }
 .pillar-card p { font-size: 0.84rem; line-height: 1.85; color: var(--text-body); }
 
-/* Cofre de Compra Lateral */
+/* Cofre Lateral */
 .cart-drawer {
     position: fixed; top: 0; right: -440px; width: 410px; max-width: 92vw; height: 100vh;
     background: var(--bg-elevated); border-left: 1px solid var(--border-hairline);
@@ -266,20 +359,18 @@ html, body {
 }
 .cart-drawer.open { right: 0; }
 .cart-items-list { flex: 1; overflow-y: auto; margin: 1.5rem 0; display: flex; flex-direction: column; gap: 1rem; }
-.cart-item {
-    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-    padding-bottom: 1rem; border-bottom: 1px solid var(--border-hairline);
-}
-.cart-item img { width: 54px; height: 54px; object-fit: contain; filter: var(--jewel-drop); }
+.cart-item { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-hairline); }
+.cart-item img { width: 58px; height: 58px; object-fit: cover; border-radius: 2px; }
 .cart-footer { border-top: 1px solid var(--border-hairline); padding-top: 1.4rem; }
 
 .footer {
-    text-align: center; padding: 2.6rem 5%; border-top: 1px solid var(--border-hairline);
+    text-align: center; padding: 2.5rem 5%; border-top: 1px solid var(--border-hairline);
     font-size: 0.68rem; letter-spacing: 0.2em; color: var(--text-muted); margin-top: auto;
 }
 
-@media (max-width: 940px) {
-    .hero-editorial, .rooms-grid, .single-jewel-layout, .tryon-layout, .bio-hero, .bio-pillars { grid-template-columns: 1fr; }
+@media (max-width: 1024px) {
+    .horizontal-collection-ribbon { flex-direction: column; height: auto; }
+    .ribbon-panel { height: 220px; }
+    .rooms-grid, .single-jewel-layout, .tryon-layout, .bio-hero, .bio-pillars { grid-template-columns: 1fr; }
     .nav-links { display: none; }
-    .single-jewel-stage { position: static; }
 }
